@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6250" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CurrencySelector">
+            <connections>
+                <outlet property="cancelBtn" destination="Vpr-rF-rkI" id="OV1-h9-Jie"/>
+                <outlet property="doneBtn" destination="XAn-3g-aAd" id="f21-95-P42"/>
+                <outlet property="picker" destination="uJY-10-9rO" id="J4Q-BF-IWI"/>
+                <outlet property="topBarView" destination="4Lx-5L-J5o" id="Laa-KB-LJD"/>
+                <outlet property="view" destination="WcM-GB-g3A" id="bMW-Gc-Qw3"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="WcM-GB-g3A">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="195"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Lx-5L-J5o">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="33"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XAn-3g-aAd">
+                            <rect key="frame" x="256" y="2" width="70" height="30"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="30" id="fin-Dg-IVc"/>
+                                <constraint firstAttribute="width" constant="70" id="gvP-IA-Scu"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <state key="normal" title="Done">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="pressDone:" destination="-1" eventType="touchUpInside" id="J51-9B-4ob"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vpr-rF-rkI">
+                            <rect key="frame" x="0.0" y="2" width="70" height="33"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="70" id="CCo-L3-nHl"/>
+                                <constraint firstAttribute="height" constant="30" id="Sth-hq-2py"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <state key="normal" title="Cancel">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="pressCancel:" destination="-1" eventType="touchUpInside" id="eOU-fm-zF0"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                    <constraints>
+                        <constraint firstItem="XAn-3g-aAd" firstAttribute="top" secondItem="4Lx-5L-J5o" secondAttribute="top" constant="2" id="YTG-8S-rBG"/>
+                        <constraint firstAttribute="trailing" secondItem="XAn-3g-aAd" secondAttribute="trailing" constant="-6" id="efH-pi-tqT"/>
+                        <constraint firstAttribute="height" constant="33" id="nnn-b0-vZ7"/>
+                    </constraints>
+                </view>
+                <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uJY-10-9rO">
+                    <rect key="frame" x="0.0" y="35" width="320" height="162"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="162" id="Lx7-NG-dv8"/>
+                    </constraints>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="2MF-cn-O1d"/>
+                        <outlet property="delegate" destination="-1" id="Ca3-bE-7aJ"/>
+                    </connections>
+                </pickerView>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="4Lx-5L-J5o" secondAttribute="trailing" id="4r0-FQ-hAH"/>
+                <constraint firstItem="4Lx-5L-J5o" firstAttribute="top" secondItem="WcM-GB-g3A" secondAttribute="top" id="bae-xG-AsU"/>
+                <constraint firstItem="4Lx-5L-J5o" firstAttribute="leading" secondItem="WcM-GB-g3A" secondAttribute="leading" id="c2R-e0-F1l"/>
+                <constraint firstAttribute="trailing" secondItem="uJY-10-9rO" secondAttribute="trailing" id="cQa-a0-wqC"/>
+                <constraint firstItem="uJY-10-9rO" firstAttribute="leading" secondItem="WcM-GB-g3A" secondAttribute="leading" id="lm1-BO-MiE"/>
+                <constraint firstItem="uJY-10-9rO" firstAttribute="top" secondItem="4Lx-5L-J5o" secondAttribute="bottom" constant="2" id="m74-9F-h1Q"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="140" y="171.5"/>
+        </view>
+    </objects>
+</document>

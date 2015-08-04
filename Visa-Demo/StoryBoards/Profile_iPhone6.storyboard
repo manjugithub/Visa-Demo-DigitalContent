@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
+    </dependencies>
+    <scenes>
+        <!--Profile Setup-->
+        <scene sceneID="j6q-oe-FW3">
+            <objects>
+                <viewController storyboardIdentifier="ProfileSetup" id="mhX-NK-mTP" customClass="ProfileSetup" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Z6M-4K-HTT"/>
+                        <viewControllerLayoutGuide type="bottom" id="izj-y6-7Yi"/>
+                    </layoutGuides>
+                    <view key="view" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="naU-uN-dkO">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RtA-Xs-Ibb">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <state key="normal" image="blank.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="pressCover:" destination="mhX-NK-mTP" eventType="touchUpInside" id="Jev-oS-kFk"/>
+                                </connections>
+                            </button>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Nfj-bh-2Nx">
+                                <rect key="frame" x="0.0" y="99" width="375" height="373"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="O4h-2o-D5n">
+                                        <rect key="frame" x="141" y="10" width="86" height="86"/>
+                                        <subviews>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="E7W-1O-mYI">
+                                                <rect key="frame" x="0.0" y="0.0" width="86" height="86"/>
+                                            </imageView>
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="88n-KT-azl">
+                                                <rect key="frame" x="0.0" y="0.0" width="86" height="86"/>
+                                                <state key="normal" image="profileSetup_AddPhoto">
+                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    </view>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aQg-m9-bDI">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="373"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <state key="normal" image="blank.png">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="pressCover:" destination="mhX-NK-mTP" eventType="touchUpInside" id="KYh-EH-U6O"/>
+                                        </connections>
+                                    </button>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TJF-c2-HFp">
+                                        <rect key="frame" x="14" y="132" width="346" height="241"/>
+                                        <subviews>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="profileSetup_form_frame" translatesAutoresizingMaskIntoConstraints="NO" id="AKa-en-UQV">
+                                                <rect key="frame" x="0.0" y="0.0" width="346" height="241"/>
+                                            </imageView>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="profileSetup_name_icon" translatesAutoresizingMaskIntoConstraints="NO" id="82q-GL-ZdF">
+                                                <rect key="frame" x="20" y="18" width="22" height="23"/>
+                                            </imageView>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="profileSetup_email_icon" translatesAutoresizingMaskIntoConstraints="NO" id="JoS-Rw-70F">
+                                                <rect key="frame" x="19" y="84" width="27" height="17"/>
+                                            </imageView>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="profileSetup_mobile_icon" translatesAutoresizingMaskIntoConstraints="NO" id="p2b-7k-ID1">
+                                                <rect key="frame" x="25" y="138" width="14" height="29"/>
+                                            </imageView>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="AcceptMoney_Amount_icon" translatesAutoresizingMaskIntoConstraints="NO" id="7h0-JB-v8t">
+                                                <rect key="frame" x="16" y="197" width="28" height="31"/>
+                                            </imageView>
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h1O-8v-TiZ">
+                                                <rect key="frame" x="0.0" y="0.0" width="297" height="205"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                <state key="normal" image="blank.png">
+                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="pressCover:" destination="mhX-NK-mTP" eventType="touchUpInside" id="YDF-xv-gND"/>
+                                                </connections>
+                                            </button>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GoI-Xg-MSd">
+                                                <rect key="frame" x="69" y="15" width="265" height="36"/>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="24"/>
+                                                <textInputTraits key="textInputTraits" returnKeyType="done"/>
+                                                <connections>
+                                                    <outlet property="delegate" destination="mhX-NK-mTP" id="81r-kp-TAO"/>
+                                                </connections>
+                                            </textField>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter Email" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Iv3-yb-NBn">
+                                                <rect key="frame" x="70" y="77" width="221" height="30"/>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="24"/>
+                                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress" returnKeyType="done"/>
+                                                <connections>
+                                                    <outlet property="delegate" destination="mhX-NK-mTP" id="3GJ-92-nbF"/>
+                                                </connections>
+                                            </textField>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter Mobile" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kp0-fd-XME">
+                                                <rect key="frame" x="70" y="136" width="221" height="30"/>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="24"/>
+                                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="numbersAndPunctuation" returnKeyType="done"/>
+                                                <connections>
+                                                    <outlet property="delegate" destination="mhX-NK-mTP" id="J6M-PT-rth"/>
+                                                </connections>
+                                            </textField>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Default Currency" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gi4-1b-fbT">
+                                                <rect key="frame" x="70" y="195" width="221" height="30"/>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="24"/>
+                                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
+                                                <connections>
+                                                    <outlet property="delegate" destination="mhX-NK-mTP" id="SCn-8W-UmW"/>
+                                                </connections>
+                                            </textField>
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ktr-9S-HjR">
+                                                <rect key="frame" x="3" y="182" width="343" height="59"/>
+                                                <state key="normal" image="blank.png">
+                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="pressCurrency:" destination="mhX-NK-mTP" eventType="touchUpInside" id="HvX-Qx-kfB"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1Vf-4v-9E3">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="75"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Profile" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AOA-vL-zmg">
+                                        <rect key="frame" x="86" y="38" width="191" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cqc-Jp-Afr">
+                                        <rect key="frame" x="-4" y="32" width="51" height="33"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <state key="normal" image="FriendsList_Back_Icon">
+                                            <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="pressBack:" destination="mhX-NK-mTP" eventType="touchUpInside" id="Ius-kV-QCV"/>
+                                        </connections>
+                                    </button>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="A9b-HO-Sy3">
+                                        <rect key="frame" x="0.0" y="74" width="375" height="1"/>
+                                        <color key="backgroundColor" red="0.7843137255" green="0.7843137255" blue="0.7843137255" alpha="1" colorSpace="calibratedRGB"/>
+                                    </view>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4IC-DI-GmK">
+                                        <rect key="frame" x="294" y="33" width="72" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <state key="normal" title="Update">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="pressUpdate:" destination="mhX-NK-mTP" eventType="touchUpInside" id="hdi-Du-mgT"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.97254901959999995" green="0.97254901959999995" blue="0.97254901959999995" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="MoneyInput_Logo" translatesAutoresizingMaskIntoConstraints="NO" id="zLq-bF-5Xz">
+                                <rect key="frame" x="107" y="637" width="160" height="15"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="addPhotoBtn" destination="88n-KT-azl" id="SGT-qK-Za3"/>
+                        <outlet property="backBtn" destination="cqc-Jp-Afr" id="uJq-2j-bJp"/>
+                        <outlet property="contentView" destination="Nfj-bh-2Nx" id="sJC-vS-cfg"/>
+                        <outlet property="coverBtn" destination="h1O-8v-TiZ" id="4fi-eP-8XN"/>
+                        <outlet property="coverBtn2" destination="aQg-m9-bDI" id="AeH-7B-YaD"/>
+                        <outlet property="coverBtn3" destination="RtA-Xs-Ibb" id="TQO-ZL-tLS"/>
+                        <outlet property="currencyBtn" destination="ktr-9S-HjR" id="SAi-r2-kWb"/>
+                        <outlet property="currencyField" destination="gi4-1b-fbT" id="e2W-hH-2f7"/>
+                        <outlet property="emailField" destination="Iv3-yb-NBn" id="XcI-7b-nwo"/>
+                        <outlet property="formView" destination="TJF-c2-HFp" id="mY4-zC-wXy"/>
+                        <outlet property="nameField" destination="GoI-Xg-MSd" id="2EH-Da-i6W"/>
+                        <outlet property="phoneField" destination="kp0-fd-XME" id="eqT-vD-DVz"/>
+                        <outlet property="profileImg" destination="E7W-1O-mYI" id="wKj-yc-FD7"/>
+                        <outlet property="profileImgView" destination="O4h-2o-D5n" id="jFE-xj-MGZ"/>
+                        <outlet property="topBarView" destination="1Vf-4v-9E3" id="6Eh-ki-6LL"/>
+                        <outlet property="topTitleLabel" destination="AOA-vL-zmg" id="REp-mO-TUg"/>
+                        <outlet property="updateBtn" destination="4IC-DI-GmK" id="YCs-ju-Xdf"/>
+                        <outlet property="view" destination="naU-uN-dkO" id="5a2-Js-gC0"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bFG-zg-0h4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="251.5" y="288.5"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="AcceptMoney_Amount_icon" width="19" height="21"/>
+        <image name="FriendsList_Back_Icon" width="12" height="20"/>
+        <image name="MoneyInput_Logo" width="180" height="16"/>
+        <image name="blank.png" width="100" height="100"/>
+        <image name="profileSetup_AddPhoto" width="74" height="73"/>
+        <image name="profileSetup_email_icon" width="22" height="15"/>
+        <image name="profileSetup_form_frame" width="296" height="204"/>
+        <image name="profileSetup_mobile_icon" width="12" height="24"/>
+        <image name="profileSetup_name_icon" width="17" height="19"/>
+    </resources>
+</document>

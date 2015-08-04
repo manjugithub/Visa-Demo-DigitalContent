@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>4720FB03-EA26-4696-89F8-F6DCA8F080EE</string>
+	<key>IDESourceControlProjectName</key>
+	<string>Fastacash</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>E6CCE54144AA64370BAAE11D8105C1207D6ABE26</key>
+		<string>https://github.com/Fastacash/Visa-Demo.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>Fastacash.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>E6CCE54144AA64370BAAE11D8105C1207D6ABE26</key>
+		<string>..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/Fastacash/Visa-Demo.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>E6CCE54144AA64370BAAE11D8105C1207D6ABE26</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>E6CCE54144AA64370BAAE11D8105C1207D6ABE26</string>
+			<key>IDESourceControlWCCName</key>
+			<string>Visa-Demo</string>
+		</dict>
+	</array>
+</dict>
+</plist>

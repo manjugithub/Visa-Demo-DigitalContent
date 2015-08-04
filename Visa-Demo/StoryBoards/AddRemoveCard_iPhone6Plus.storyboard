@@ -1,0 +1,628 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
+    </dependencies>
+    <scenes>
+        <!--Add Remove Card-->
+        <scene sceneID="SsP-M0-PD9">
+            <objects>
+                <viewController storyboardIdentifier="AddRemoveCard" id="Qg9-Bw-hiW" customClass="AddRemoveCard" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="22P-NI-x0W"/>
+                        <viewControllerLayoutGuide type="bottom" id="J78-61-c2G"/>
+                    </layoutGuides>
+                    <view key="view" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="SjG-nx-8aY">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9SW-mF-X2z">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="84"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Wallet" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yvn-uR-Rhu">
+                                        <rect key="frame" x="69" y="35" width="276" height="35"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="26"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eK0-Fm-ZKZ">
+                                        <rect key="frame" x="-13" y="35" width="56" height="36"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <state key="normal" image="FriendsList_Back_Icon">
+                                            <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="pressBack:" destination="Qg9-Bw-hiW" eventType="touchUpInside" id="TXI-UH-pgc"/>
+                                        </connections>
+                                    </button>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Syg-cg-1Gu">
+                                        <rect key="frame" x="0.0" y="83" width="414" height="1"/>
+                                        <color key="backgroundColor" red="0.7843137255" green="0.7843137255" blue="0.7843137255" alpha="1" colorSpace="calibratedRGB"/>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" red="0.97254901959999995" green="0.97254901959999995" blue="0.97254901959999995" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gQI-h3-ORF">
+                                <rect key="frame" x="0.0" y="85" width="414" height="328"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0D7-23-MtL">
+                                <rect key="frame" x="87" y="404" width="239" height="38"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Set as default card" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w5W-SN-PQu">
+                                        <rect key="frame" x="46" y="9" width="188" height="21"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="21"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="AddCard_Star_Blank" translatesAutoresizingMaskIntoConstraints="NO" id="Hwh-Vv-8gH">
+                                        <rect key="frame" x="10" y="6" width="24" height="23"/>
+                                    </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qrV-H8-AXb">
+                                        <rect key="frame" x="0.0" y="0.0" width="231" height="38"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                        <state key="normal" image="blank.png">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="pressSetDefault:" destination="Qg9-Bw-hiW" eventType="touchUpInside" id="Ecy-bt-Wdp"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ufq-WY-RQ2">
+                                <rect key="frame" x="160" y="668" width="94" height="35"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="22"/>
+                                <state key="normal" title="Remove">
+                                    <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="pressDelete:" destination="Qg9-Bw-hiW" eventType="touchUpInside" id="JZ9-tN-IqW"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
+                    <connections>
+                        <outlet property="backBtn" destination="eK0-Fm-ZKZ" id="O7Z-3d-pCD"/>
+                        <outlet property="deleteBtn" destination="Ufq-WY-RQ2" id="1cn-0O-HO4"/>
+                        <outlet property="selectCardView" destination="gQI-h3-ORF" id="Epn-Wr-JX0"/>
+                        <outlet property="setDefaultBtn" destination="qrV-H8-AXb" id="TcR-v0-fn0"/>
+                        <outlet property="setDefaultStar" destination="Hwh-Vv-8gH" id="ABf-I9-Ubw"/>
+                        <outlet property="setDefaultTitleLabel" destination="w5W-SN-PQu" id="u4g-du-C5g"/>
+                        <outlet property="setDefaultView" destination="0D7-23-MtL" id="Mz2-Xe-Kog"/>
+                        <outlet property="topBarView" destination="9SW-mF-X2z" id="HOV-5r-Xh7"/>
+                        <outlet property="topTitleLabel" destination="yvn-uR-Rhu" id="ILg-ub-Czm"/>
+                        <outlet property="view" destination="SjG-nx-8aY" id="YUv-SO-ewp"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1QQ-b5-Alh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="128" y="321"/>
+        </scene>
+        <!--Add Card-->
+        <scene sceneID="6RF-jU-zKV">
+            <objects>
+                <viewController storyboardIdentifier="AddCard" id="Uhe-Zl-bYV" customClass="AddCard" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Mlt-SL-mQn"/>
+                        <viewControllerLayoutGuide type="bottom" id="pCd-xZ-QY0"/>
+                    </layoutGuides>
+                    <view key="view" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="Hmj-LR-ghe">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OBb-TE-c5o">
+                                <rect key="frame" x="0.0" y="84" width="414" height="650"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OOi-Bm-9RT">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="650"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <state key="normal" image="blank.png">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="pressCover:" destination="Uhe-Zl-bYV" eventType="touchUpInside" id="Lux-Aa-Wjk"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gfL-xP-QPp">
+                                        <rect key="frame" x="52" y="35" width="309" height="191"/>
+                                        <state key="normal" image="AddCard_Scan_Card_Icon">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="pressNewCard:" destination="Uhe-Zl-bYV" eventType="touchUpInside" id="Uzl-HP-OEq"/>
+                                        </connections>
+                                    </button>
+                                    <view hidden="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6Qg-j4-62R">
+                                        <rect key="frame" x="14" y="10" width="385" height="239"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2n0-JD-hgT">
+                                                <rect key="frame" x="0.0" y="0.0" width="385" height="239"/>
+                                                <subviews>
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="AddCard_Card_Bg" translatesAutoresizingMaskIntoConstraints="NO" id="Mu8-J7-Ry1">
+                                                        <rect key="frame" x="0.0" y="0.0" width="385" height="239"/>
+                                                    </imageView>
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="BrowseCard_Default_Triangle" translatesAutoresizingMaskIntoConstraints="NO" id="yxP-Gf-zel">
+                                                        <rect key="frame" x="325" y="0.0" width="60" height="60"/>
+                                                    </imageView>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="5555 5555 5555 5555" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="Rk9-FR-2e5">
+                                                        <rect key="frame" x="17" y="97" width="347" height="51"/>
+                                                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="35"/>
+                                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Shantona mikinibuto" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="7cO-xb-xZI">
+                                                        <rect key="frame" x="24" y="192" width="214" height="32"/>
+                                                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="22"/>
+                                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="05/18" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="jqB-Gv-kGS">
+                                                        <rect key="frame" x="153" y="155" width="68" height="26"/>
+                                                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="18"/>
+                                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="AddCard_Card_Visa_Logo" translatesAutoresizingMaskIntoConstraints="NO" id="YIa-ZI-CQq">
+                                                        <rect key="frame" x="257" y="174" width="111" height="50"/>
+                                                    </imageView>
+                                                </subviews>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            </view>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    </view>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6Xd-RH-5xc">
+                                        <rect key="frame" x="0.0" y="265" width="414" height="385"/>
+                                        <subviews>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="AddCard_Form_Border" translatesAutoresizingMaskIntoConstraints="NO" id="lPI-2K-KH7">
+                                                <rect key="frame" x="13" y="0.0" width="387" height="230"/>
+                                            </imageView>
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s4Y-Gd-y7O">
+                                                <rect key="frame" x="0.0" y="0.0" width="414" height="418"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                <state key="normal" image="blank.png">
+                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="pressCover:" destination="Uhe-Zl-bYV" eventType="touchUpInside" id="qEx-OD-8pS"/>
+                                                </connections>
+                                            </button>
+                                            <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Card Number" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WxW-lg-80f">
+                                                <rect key="frame" x="33" y="25" width="320" height="30"/>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="24"/>
+                                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="numbersAndPunctuation" returnKeyType="done"/>
+                                                <connections>
+                                                    <outlet property="delegate" destination="Uhe-Zl-bYV" id="hfN-us-LWz"/>
+                                                </connections>
+                                            </textField>
+                                            <textField opaque="NO" clipsSubviews="YES" tag="2" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Card Holder Name (min. 6 chars)" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Lnw-CP-elT">
+                                                <rect key="frame" x="34" y="99" width="318" height="30"/>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="24"/>
+                                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done"/>
+                                                <connections>
+                                                    <outlet property="delegate" destination="Uhe-Zl-bYV" id="zUK-U2-Vta"/>
+                                                </connections>
+                                            </textField>
+                                            <textField opaque="NO" clipsSubviews="YES" tag="3" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Expiry Date" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6cM-Wg-ud8">
+                                                <rect key="frame" x="34" y="174" width="135" height="30"/>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="24"/>
+                                                <textInputTraits key="textInputTraits" returnKeyType="done"/>
+                                                <connections>
+                                                    <outlet property="delegate" destination="Uhe-Zl-bYV" id="c8W-7j-A1d"/>
+                                                </connections>
+                                            </textField>
+                                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="z9g-90-ZSl">
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            </view>
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HhW-sq-vmD">
+                                                <rect key="frame" x="14" y="155" width="203" height="71"/>
+                                                <state key="normal" image="blank.png">
+                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="pressExpiryDate:" destination="Uhe-Zl-bYV" eventType="touchUpInside" id="vtN-TO-ekW"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wtK-2W-dVs">
+                                                <rect key="frame" x="15" y="2" width="383" height="71"/>
+                                                <state key="normal" image="blank.png">
+                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="pressCardNumberInput:" destination="Uhe-Zl-bYV" eventType="touchUpInside" id="QlG-cR-Nu0"/>
+                                                </connections>
+                                            </button>
+                                            <textField opaque="NO" clipsSubviews="YES" tag="4" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="CVV" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ua2-6T-TQ6">
+                                                <rect key="frame" x="234" y="174" width="109" height="30"/>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="24"/>
+                                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="numbersAndPunctuation" returnKeyType="done"/>
+                                                <connections>
+                                                    <outlet property="delegate" destination="Uhe-Zl-bYV" id="n6Y-O5-24b"/>
+                                                </connections>
+                                            </textField>
+                                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bCy-Oo-UyY">
+                                                <rect key="frame" x="122" y="255" width="168" height="30"/>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="18"/>
+                                                <state key="normal" title="Set as Default Card" backgroundImage="AddCard_Default_Card_Btn_Bg">
+                                                    <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="pressSetDefault:" destination="Uhe-Zl-bYV" eventType="touchUpInside" id="IPl-3y-xXW"/>
+                                                </connections>
+                                            </button>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="AddCard_Validate_Tick" translatesAutoresizingMaskIntoConstraints="NO" id="aOd-bz-Xnf">
+                                                <rect key="frame" x="358" y="20" width="31" height="31"/>
+                                            </imageView>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="AddCard_Validate_Tick" translatesAutoresizingMaskIntoConstraints="NO" id="QIv-WE-eau">
+                                                <rect key="frame" x="358" y="99" width="31" height="31"/>
+                                            </imageView>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="AddCard_Validate_Tick" translatesAutoresizingMaskIntoConstraints="NO" id="ifd-Gj-FfO">
+                                                <rect key="frame" x="358" y="176" width="31" height="31"/>
+                                            </imageView>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="AddCard_Validate_Tick" translatesAutoresizingMaskIntoConstraints="NO" id="A4E-SD-MoZ">
+                                                <rect key="frame" x="177" y="176" width="31" height="31"/>
+                                            </imageView>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ak5-XJ-wwY">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="84"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Add Card" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CHE-Sm-Ogj">
+                                        <rect key="frame" x="83" y="37" width="233" height="35"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="26"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gfw-N2-748">
+                                        <rect key="frame" x="8" y="40" width="76" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                        <state key="normal" title="Cancel">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="pressCancel:" destination="Uhe-Zl-bYV" eventType="touchUpInside" id="EgL-Ek-9Xu"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sf5-FA-zM6">
+                                        <rect key="frame" x="340" y="39" width="64" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                        <state key="normal" title="Done">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="pressDone:" destination="Uhe-Zl-bYV" eventType="touchUpInside" id="4Re-HA-wGO"/>
+                                        </connections>
+                                    </button>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sdf-Mv-BcO">
+                                        <rect key="frame" x="0.0" y="83" width="414" height="1"/>
+                                        <color key="backgroundColor" red="0.7843137255" green="0.7843137255" blue="0.7843137255" alpha="1" colorSpace="calibratedRGB"/>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" red="0.97254901959999995" green="0.97254901959999995" blue="0.97254901959999995" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
+                            <view hidden="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cPy-wb-D2W">
+                                <rect key="frame" x="0.0" y="411" width="414" height="325"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="D6u-AG-81n">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="369"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gWT-lk-xf4">
+                                                <rect key="frame" x="0.0" y="0.0" width="414" height="62"/>
+                                                <color key="backgroundColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
+                                            </view>
+                                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XWd-IX-lPG">
+                                                <rect key="frame" x="0.0" y="126" width="414" height="62"/>
+                                                <color key="backgroundColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
+                                            </view>
+                                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BNc-7q-EC2">
+                                                <rect key="frame" x="0.0" y="0.0" width="414" height="251"/>
+                                                <subviews>
+                                                    <button opaque="NO" tag="101" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dCj-aF-shs">
+                                                        <rect key="frame" x="40" y="-2" width="86" height="62"/>
+                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="31"/>
+                                                        <state key="normal" title="1">
+                                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                        </state>
+                                                        <connections>
+                                                            <action selector="pressNum:" destination="Uhe-Zl-bYV" eventType="touchUpInside" id="PKk-mX-wjJ"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" tag="102" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tau-HP-2IG">
+                                                        <rect key="frame" x="163" y="0.0" width="86" height="62"/>
+                                                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="31"/>
+                                                        <state key="normal" title="2">
+                                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                        </state>
+                                                        <connections>
+                                                            <action selector="pressNum:" destination="Uhe-Zl-bYV" eventType="touchUpInside" id="mwB-p5-Ul7"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" tag="103" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ker-ym-E3M">
+                                                        <rect key="frame" x="292" y="0.0" width="86" height="62"/>
+                                                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="31"/>
+                                                        <state key="normal" title="3">
+                                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                        </state>
+                                                        <connections>
+                                                            <action selector="pressNum:" destination="Uhe-Zl-bYV" eventType="touchUpInside" id="Bsf-9S-xGg"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" tag="104" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K5u-gO-cGK">
+                                                        <rect key="frame" x="41" y="63" width="86" height="62"/>
+                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="31"/>
+                                                        <state key="normal" title="4">
+                                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                        </state>
+                                                        <connections>
+                                                            <action selector="pressNum:" destination="Uhe-Zl-bYV" eventType="touchUpInside" id="xmD-fj-a3c"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" tag="105" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AwE-FJ-WIk">
+                                                        <rect key="frame" x="163" y="63" width="86" height="62"/>
+                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="31"/>
+                                                        <state key="normal" title="5">
+                                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                        </state>
+                                                        <connections>
+                                                            <action selector="pressNum:" destination="Uhe-Zl-bYV" eventType="touchUpInside" id="cuu-2A-nwv"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" tag="106" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lwl-g2-83o">
+                                                        <rect key="frame" x="292" y="63" width="86" height="62"/>
+                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="36"/>
+                                                        <state key="normal" title="6">
+                                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                        </state>
+                                                        <connections>
+                                                            <action selector="pressNum:" destination="Uhe-Zl-bYV" eventType="touchUpInside" id="kh5-1l-PE0"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" tag="107" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jIe-Pm-V0Q">
+                                                        <rect key="frame" x="41" y="124" width="86" height="62"/>
+                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="31"/>
+                                                        <state key="normal" title="7">
+                                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                        </state>
+                                                        <connections>
+                                                            <action selector="pressNum:" destination="Uhe-Zl-bYV" eventType="touchUpInside" id="iaI-UW-xxI"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" tag="108" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dUI-PV-dJX">
+                                                        <rect key="frame" x="162" y="127" width="86" height="62"/>
+                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="31"/>
+                                                        <state key="normal" title="8">
+                                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                        </state>
+                                                        <connections>
+                                                            <action selector="pressNum:" destination="Uhe-Zl-bYV" eventType="touchUpInside" id="LhQ-yD-5ai"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" tag="109" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DYc-Zm-Hvd">
+                                                        <rect key="frame" x="292" y="127" width="86" height="62"/>
+                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="31"/>
+                                                        <state key="normal" title="9">
+                                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                        </state>
+                                                        <connections>
+                                                            <action selector="pressNum:" destination="Uhe-Zl-bYV" eventType="touchUpInside" id="dee-Vj-Xy1"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" tag="110" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="90d-VR-nvH">
+                                                        <rect key="frame" x="41" y="189" width="86" height="62"/>
+                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="31"/>
+                                                        <state key="normal" title=".">
+                                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                        </state>
+                                                    </button>
+                                                    <button opaque="NO" tag="100" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PUF-HU-hkD">
+                                                        <rect key="frame" x="164" y="189" width="86" height="62"/>
+                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="31"/>
+                                                        <state key="normal" title="0">
+                                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                        </state>
+                                                        <connections>
+                                                            <action selector="pressNum:" destination="Uhe-Zl-bYV" eventType="touchUpInside" id="cb4-gE-RJ5"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" tag="111" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6g7-nz-xdH">
+                                                        <rect key="frame" x="290" y="188" width="86" height="62"/>
+                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                        <state key="normal" image="MoneyInput_Delete_Icon">
+                                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                        </state>
+                                                        <connections>
+                                                            <action selector="pressNum:" destination="Uhe-Zl-bYV" eventType="touchUpInside" id="pJl-1X-Tk1"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            </view>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    </view>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="abM-Ll-raN">
+                                        <rect key="frame" x="0.0" y="254" width="414" height="71"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4yk-1Y-yOc">
+                                                <rect key="frame" x="0.0" y="0.0" width="414" height="71"/>
+                                                <color key="backgroundColor" red="0.86274509799999999" green="0.86274509799999999" blue="0.86274509799999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="27"/>
+                                                <state key="normal" title="Done">
+                                                    <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <state key="selected">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <state key="highlighted">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="pressNumberInputDone:" destination="Uhe-Zl-bYV" eventType="touchUpInside" id="tUj-Ei-UpC"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
+                    <connections>
+                        <outlet property="cancelBtn" destination="gfw-N2-748" id="uid-pu-NGn"/>
+                        <outlet property="cardHolderNameField" destination="Lnw-CP-elT" id="2n3-Fz-tc7"/>
+                        <outlet property="cardNumberField" destination="WxW-lg-80f" id="avz-XB-oOx"/>
+                        <outlet property="contentView" destination="OBb-TE-c5o" id="whj-Qb-we0"/>
+                        <outlet property="coverButton" destination="s4Y-Gd-y7O" id="4EC-P9-MqM"/>
+                        <outlet property="coverButton2" destination="OOi-Bm-9RT" id="ui8-v3-P3B"/>
+                        <outlet property="cvvField" destination="ua2-6T-TQ6" id="kgc-iy-DiD"/>
+                        <outlet property="doneBtn" destination="Sf5-FA-zM6" id="Wb7-y8-ntu"/>
+                        <outlet property="expiryCardBtn" destination="HhW-sq-vmD" id="bhi-df-hCl"/>
+                        <outlet property="expiryDateField" destination="6cM-Wg-ud8" id="Ibn-uN-uVW"/>
+                        <outlet property="formView" destination="6Xd-RH-5xc" id="TOJ-fx-2yg"/>
+                        <outlet property="generateBtn" destination="4yk-1Y-yOc" id="HED-xN-Ria"/>
+                        <outlet property="inputMainView" destination="cPy-wb-D2W" id="naq-sy-9IO"/>
+                        <outlet property="inputView" destination="D6u-AG-81n" id="bFc-Mc-bS9"/>
+                        <outlet property="scanCardButton" destination="gfL-xP-QPp" id="RMC-li-5Po"/>
+                        <outlet property="selectedCardBg" destination="Mu8-J7-Ry1" id="LHl-hW-WeI"/>
+                        <outlet property="selectedCardDefaultStar" destination="yxP-Gf-zel" id="GI1-gS-1he"/>
+                        <outlet property="selectedCardInnerView" destination="2n0-JD-hgT" id="Wk2-Cw-UGx"/>
+                        <outlet property="selectedCardNameLabel" destination="7cO-xb-xZI" id="Lox-U7-kr2"/>
+                        <outlet property="selectedCardNumberLabel" destination="Rk9-FR-2e5" id="jM2-C8-HYW"/>
+                        <outlet property="selectedCardValidDateNumberLabel" destination="jqB-Gv-kGS" id="LZY-Pq-EWD"/>
+                        <outlet property="selectedCardView" destination="6Qg-j4-62R" id="M00-V0-S2p"/>
+                        <outlet property="setDefaultBtn" destination="bCy-Oo-UyY" id="iHd-lX-0qj"/>
+                        <outlet property="topBarView" destination="ak5-XJ-wwY" id="CTq-40-MkS"/>
+                        <outlet property="topTitleLabel" destination="CHE-Sm-Ogj" id="CIz-b3-hJf"/>
+                        <outlet property="validatedCCVTick" destination="ifd-Gj-FfO" id="Yzw-nh-X9A"/>
+                        <outlet property="validatedCardNumberTick" destination="aOd-bz-Xnf" id="AQE-jF-l0Y"/>
+                        <outlet property="validatedExpiryTick" destination="A4E-SD-MoZ" id="BpK-mr-0lc"/>
+                        <outlet property="validatedNameTick" destination="QIv-WE-eau" id="itb-sk-VlE"/>
+                        <outlet property="view" destination="Hmj-LR-ghe" id="9Fv-gC-KgV"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KMe-i0-0Lu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="603" y="321"/>
+        </scene>
+        <!--Add Card Cam-->
+        <scene sceneID="y9T-rg-7bM">
+            <objects>
+                <viewController storyboardIdentifier="AddCardCam" id="cnz-jP-yZi" customClass="AddCardCam" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="L9r-w8-ybO"/>
+                        <viewControllerLayoutGuide type="bottom" id="RPA-vh-10V"/>
+                    </layoutGuides>
+                    <view key="view" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="nMU-FM-5Rl">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eYh-82-BsR">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZdR-yw-9jg">
+                                <rect key="frame" x="0.0" y="67" width="414" height="602"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cqh-FP-TQJ">
+                                        <rect key="frame" x="5" y="10" width="47" height="35"/>
+                                        <state key="normal" image="AddCard_Flash_Icon">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="AddCard_Scan_Frame" translatesAutoresizingMaskIntoConstraints="NO" id="Fr4-yV-uki">
+                                        <rect key="frame" x="59" y="205" width="296" height="191"/>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="H5M-D2-6MW">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="162"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0ZY-hm-gwF">
+                                        <rect key="frame" x="6" y="40" width="76" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                        <state key="normal" title="Cancel">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="pressCancel:" destination="cnz-jP-yZi" eventType="touchUpInside" id="zGe-JL-a30"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="k4d-9Z-urN">
+                                <rect key="frame" x="0.0" y="586" width="414" height="150"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
+                    <connections>
+                        <outlet property="bottomView" destination="k4d-9Z-urN" id="4yM-wU-j9f"/>
+                        <outlet property="cancelBtn" destination="0ZY-hm-gwF" id="1Vs-qa-0Ni"/>
+                        <outlet property="overlayFrameImg" destination="Fr4-yV-uki" id="Xcn-a1-sp6"/>
+                        <outlet property="overlayView" destination="ZdR-yw-9jg" id="kbm-I3-5ev"/>
+                        <outlet property="scannerView" destination="eYh-82-BsR" id="YjL-ec-k0U"/>
+                        <outlet property="topView" destination="H5M-D2-6MW" id="Tvn-PT-QAl"/>
+                        <outlet property="view" destination="nMU-FM-5Rl" id="bSS-Ht-FjK"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ILi-8C-psD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1061" y="321"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="AddCard_Card_Bg" width="318" height="198"/>
+        <image name="AddCard_Card_Visa_Logo" width="96" height="43"/>
+        <image name="AddCard_Default_Card_Btn_Bg" width="145" height="28"/>
+        <image name="AddCard_Flash_Icon" width="47" height="35"/>
+        <image name="AddCard_Form_Border" width="296" height="176"/>
+        <image name="AddCard_Scan_Card_Icon" width="234" height="146"/>
+        <image name="AddCard_Scan_Frame" width="295" height="190"/>
+        <image name="AddCard_Star_Blank" width="17" height="16"/>
+        <image name="AddCard_Validate_Tick" width="26" height="26"/>
+        <image name="BrowseCard_Default_Triangle" width="48" height="48"/>
+        <image name="FriendsList_Back_Icon" width="12" height="20"/>
+        <image name="MoneyInput_Delete_Icon" width="23" height="17"/>
+        <image name="blank.png" width="100" height="100"/>
+    </resources>
+</document>
