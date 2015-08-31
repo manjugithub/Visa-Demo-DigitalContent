@@ -12,6 +12,8 @@
 @interface MessageCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UITextView *messageTextView;
 @property (nonatomic, weak) DigitalContentCreationVC *ParentVC;
+@property (weak, nonatomic) IBOutlet UIView *bgView;
+@property (weak, nonatomic) IBOutlet UIImageView *sideImageView,*profileImageView;
 
 -(void)setDatasource:(NSMutableDictionary *)inDataDict;
 - (IBAction)closeDigitalCell:(id)sender;

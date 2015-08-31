@@ -1,9 +1,9 @@
 //
 //  TGCDownloadProgressIndicator.m
-//  PerfectWellness
+//  Fastacash
 //
-//  Created by Apple on 14/05/15.
-//
+//  Created by Accion on 09/07/15.
+//  Copyright (c) 2015 Hon Tat Ong. All rights reserved.
 //
 
 #import "TGCDownloadProgressIndicator.h"
@@ -109,7 +109,6 @@
         }
         case eDownloadFinished:
         {
-            //self.downloadButton.hidden = YES;
             [self.downloadButton setImage:[UIImage imageNamed:@"checkbox_selected.png"] forState: UIControlStateNormal];
             break;
         }

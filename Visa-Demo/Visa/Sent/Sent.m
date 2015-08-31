@@ -18,13 +18,18 @@
 #import "VideoPlayer.h"
 #import "MessageCell.h"
 #import "AudioPlaybackCell.h"
-
+#import "ProfileCell.h"
+#import "ConversionCell.h"
+#import "FastaLinkCell.h"
+#import "VisaCardCell.h"
+#import "CurrencyCell.h"
 
 @interface Sent () {
     MBProgressHUD *hud;
 }
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) NSMutableArray *dataSourceDict;
+@property (weak, nonatomic) IBOutlet UITextView *messageTextView;
 
 @end
 
@@ -32,12 +37,33 @@
 
 - (void)viewDidLoad
 {
-    AppDelegate *apDelegate = [[UIApplication sharedApplication] delegate];
-    self.dataSourceDict = apDelegate.datasourceArray;
+//    AppDelegate *apDelegate = [[UIApplication sharedApplication] delegate];
     
-    NSMutableDictionary *dataDict = [[NSMutableDictionary alloc] initWithObjectsAndKeys:@"content",@"type", nil];
-    [self.dataSourceDict insertObject:dataDict atIndex:0];
+    self.dataSourceDict = [[NSMutableArray alloc] init];
+
     
+    NSMutableDictionary *visaCardDict = [[NSMutableDictionary alloc] initWithObjectsAndKeys:@"visaCard",@"type", nil];
+    [self.dataSourceDict insertObject:visaCardDict atIndex:0];
+
+
+    NSMutableDictionary *fastalinkDict = [[NSMutableDictionary alloc] initWithObjectsAndKeys:@"fastalink",@"type", nil];
+    [self.dataSourceDict insertObject:fastalinkDict atIndex:0];
+    
+
+    NSMutableDictionary *conversionDict = [[NSMutableDictionary alloc] initWithObjectsAndKeys:@"conversion",@"type", nil];
+    [self.dataSourceDict insertObject:conversionDict atIndex:0];
+
+    
+    NSMutableDictionary *CurrencyDict = [[NSMutableDictionary alloc] initWithObjectsAndKeys:@"CurrencyCell",@"type", nil];
+    
+    [self.dataSourceDict insertObject:CurrencyDict atIndex:0];
+
+    
+    NSMutableDictionary *profileDict = [[NSMutableDictionary alloc] initWithObjectsAndKeys:@"profile",@"type", nil];
+    
+    [self.dataSourceDict insertObject:profileDict atIndex:0];
+
+
     [self.tableView reloadData];
     [super viewDidLoad];
     NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
@@ -60,7 +86,8 @@
     }
     //
     //
-    
+    [self getMetaData];
+
 }
 
 
@@ -68,6 +95,7 @@
 {
     [super viewWillAppear:animated];
     [self statusSetup];
+    
 }
 
 -(void)viewDidAppear:(BOOL)animated{
@@ -481,16 +509,37 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSMutableDictionary *dataDict = [self.dataSourceDict objectAtIndex:indexPath.row];
-    if ([[dataDict valueForKey:@"type"] isEqualToString:@"content"])
+    
+    
+    if ([[dataDict valueForKey:@"type"] isEqualToString:@"profile"])
     {
-        if(visaInfoView.hidden)
-            return 270;
-        return 320;
+        return 67;
+    }
+    if ([[dataDict valueForKey:@"type"] isEqualToString:@"CurrencyCell"])
+    {
+        return 75;
+    }
+    if ([[dataDict valueForKey:@"type"] isEqualToString:@"conversion"])
+    {
+        return 80;
+    }
+    if ([[dataDict valueForKey:@"type"] isEqualToString:@"fastalink"])
+    {
+        return 67;
+    }
+    if ([[dataDict valueForKey:@"type"] isEqualToString:@"visaCard"])
+    {
+        return 67;
     }
     if ([[dataDict valueForKey:@"type"] isEqualToString:@"text"])
     {
-        NSLog(@"Height ===> %f",[[NSUserDefaults standardUserDefaults] floatForKey:@"textRowHeight"]);
-        return     [[NSUserDefaults standardUserDefaults] floatForKey:@"textRowHeight"];
+        if ([[dataDict valueForKey:@"type"] isEqualToString:@"text"])
+        {
+            CGFloat height = self.messageTextView.contentSize.height - 10.0;
+            [[NSUserDefaults standardUserDefaults] setFloat:height > 80.0 ? height : 80.0 forKey:@"textRowHeight"];
+            [[NSUserDefaults standardUserDefaults] synchronize];
+            return height > 80 ? height : 80;
+        }
     }
     if ([[dataDict valueForKey:@"type"] isEqualToString:@"audio"])
     {
@@ -506,11 +555,71 @@
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    
+    FCSession *session = [FCSession sharedSession];
+    FCLinkType sessionType = session.type;
+
     NSMutableDictionary *dataDict = [self.dataSourceDict objectAtIndex:indexPath.row];
-    if ([[dataDict valueForKey:@"type"] isEqualToString:@"content"])
+
+    if ([[dataDict valueForKey:@"type"] isEqualToString:@"profile"])
     {
-        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ContentCell" forIndexPath:indexPath];
-        [cell.contentView addSubview:contentView];
+        ProfileCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ProfileCell" forIndexPath:indexPath];
+        if (sessionType == kLinkTypeSendExternal){
+            [cell updateViewForSent];
+            deductFromTitleLabel.text = @"Debited from";
+        } else if (sessionType == kLinkTypeRequest ){
+            [cell updateViewForRequest];
+            deductFromTitleLabel.text = @"Debit from";
+        }
+
+        return cell;
+    }
+    else if ([[dataDict valueForKey:@"type"] isEqualToString:@"CurrencyCell"])
+    {
+        CurrencyCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CurrencyCell" forIndexPath:indexPath];
+        if (sessionType == kLinkTypeSendExternal){
+            [cell updateViewForSent];
+            deductFromTitleLabel.text = @"Debited from";
+        } else if (sessionType == kLinkTypeRequest ){
+            [cell updateViewForRequest];
+            deductFromTitleLabel.text = @"Debit from";
+        }
+        return cell;
+    }
+    else if ([[dataDict valueForKey:@"type"] isEqualToString:@"conversion"])
+    {
+        ConversionCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ConversionCell" forIndexPath:indexPath];
+        if (sessionType == kLinkTypeSendExternal){
+            [cell updateViewForSent];
+            deductFromTitleLabel.text = @"Debited from";
+        } else if (sessionType == kLinkTypeRequest ){
+            [cell updateViewForRequest];
+            deductFromTitleLabel.text = @"Debit from";
+        }
+        return cell;
+    }
+    else if ([[dataDict valueForKey:@"type"] isEqualToString:@"fastalink"])
+    {
+        FastaLinkCell *cell = [tableView dequeueReusableCellWithIdentifier:@"FastaLinkCell" forIndexPath:indexPath];
+        if (sessionType == kLinkTypeSendExternal){
+            [cell updateViewForSent];
+            deductFromTitleLabel.text = @"Debited from";
+        } else if (sessionType == kLinkTypeRequest ){
+            [cell updateViewForRequest];
+            deductFromTitleLabel.text = @"Debit from";
+        }
+        return cell;
+    }
+    else if ([[dataDict valueForKey:@"type"] isEqualToString:@"visaCard"])
+    {
+        VisaCardCell *cell = [tableView dequeueReusableCellWithIdentifier:@"VisaCardCell" forIndexPath:indexPath];
+        if (sessionType == kLinkTypeSendExternal){
+            [cell updateViewForSent];
+            deductFromTitleLabel.text = @"Debited from";
+        } else if (sessionType == kLinkTypeRequest ){
+            [cell updateViewForRequest];
+            deductFromTitleLabel.text = @"Debit from";
+        }
         return cell;
     }
     else if ([[dataDict valueForKey:@"type"] isEqualToString:@"text"])
@@ -522,14 +631,21 @@
     else if([[dataDict valueForKey:@"type"] isEqualToString:@"audio"])
     {
         AudioPlaybackCell *cell = [tableView dequeueReusableCellWithIdentifier:@"AudioPlaybackCell" forIndexPath:indexPath];
-        [cell setFinalDatasource:dataDict];
+        [cell getAudioLink:dataDict];
+        return cell;
+    }
+    else if([[dataDict valueForKey:@"type"] isEqualToString:@"image"])
+    {
+        VideoImageCell *cell = [tableView dequeueReusableCellWithIdentifier:@"VideoImageCell" forIndexPath:indexPath];
+        cell.ParentVC = self;
+        [cell downloadMedia:dataDict];
         return cell;
     }
     else
     {
         VideoImageCell *cell = [tableView dequeueReusableCellWithIdentifier:@"VideoImageCell" forIndexPath:indexPath];
         cell.ParentVC = self;
-        [cell setFinalDatasource:dataDict];
+        [cell getVideoLink:dataDict];
         return cell;
     }
     return nil;
@@ -544,10 +660,89 @@
 {
     UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"DigitalContent" bundle:nil];
     VideoPlayer *videoController = [mainStoryboard instantiateViewControllerWithIdentifier:@"VideoPlayer"];
-    videoController.movieURL = [NSURL fileURLWithPath:[inDict valueForKey:@"path"]];
+    videoController.movieURL = [NSURL fileURLWithPath:[Util videoFilePath]];
     
     //    [socialSetup assignParent:self];
     [self.navigationController pushViewController:videoController animated:YES];
+    
+}
+
+
+
+-(void)getMetaData
+{
+    NSString *linkID = [FCSession sharedSession].linkID;
+    [FCHTTPClient sharedFCHTTPClient].delegate = self;
+    [[FCHTTPClient sharedFCHTTPClient] getLinkMetadata:linkID];
+}
+
+- (void)didSuccessGetLinkMetadata:(id)result
+{
+    
+    if(nil != [result valueForKey:@"images"])
+    {
+        for (NSDictionary *dataDict in [[[result valueForKey:@"images"] valueForKey:@"preview"] lastObject])
+        {
+            if([[[dataDict valueForKey:@"format"] uppercaseString] isEqualToString:@"PREVIEW"])
+            {
+                [self.dataSourceDict addObject:[[NSMutableDictionary alloc] initWithObjectsAndKeys:[dataDict valueForKey:@"value"],@"path",@"image",@"type",nil]];
+            }
+        }
+    }
+    
+    if(nil != [result valueForKey:@"videos"])
+    {
+        
+        for (NSMutableDictionary *videoDict in [[[result valueForKey:@"videos"] valueForKey:@"preview"] lastObject])
+        {
+            if([[[videoDict valueForKey:@"format"] lowercaseString] isEqualToString:@"large"])
+            {
+                [self.dataSourceDict addObject:[[NSMutableDictionary alloc] initWithObjectsAndKeys:[videoDict valueForKey:@"value"],@"path",@"video",@"type",[[[result valueForKey:@"videos"] valueForKey:@"id"] lastObject],@"id",nil]];
+            }
+        }
+    }
+    
+    
+    if(nil != [result valueForKey:@"audios"])
+    {
+        
+        NSMutableDictionary *audioDict = [[[result valueForKey:@"audios"] valueForKey:@"preview"] lastObject];
+        [self.dataSourceDict addObject:[[NSMutableDictionary alloc] initWithObjectsAndKeys:[audioDict valueForKey:@"value"],@"path",@"audio",@"type",[[[result valueForKey:@"audios"] valueForKey:@"id"] lastObject],@"id",nil]];
+    }
+    
+    if(nil != [result valueForKey:@"texts"])
+    {
+        [FCHTTPClient sharedFCHTTPClient].delegate = self;
+        [[FCHTTPClient sharedFCHTTPClient] getDownloadLinkForMetadataID:[[[result valueForKey:@"texts"] valueForKey:@"id"] lastObject]];
+        
+    }
+    
+    [self.tableView reloadData];
+    
+    
+//    [self setupViewFromSession];
+}
+
+- (void)didFailedGetLinkMetadata:(NSError *)error
+{
+    
+}
+
+
+- (void)didSuccessgetDownloadLink:(id)result
+{
+    id message  =  [[[[result valueForKey:@"params"] valueForKey:@"param"] lastObject] valueForKey:@"value"];
+    NSLog(@"%@",message);
+    
+    self.messageTextView.text = message;
+    
+    [self.dataSourceDict addObject:[[NSMutableDictionary alloc] initWithObjectsAndKeys:[[[[result valueForKey:@"params"] valueForKey:@"param"] lastObject] valueForKey:@"value"],@"message",@"text",@"type",nil]];
+    
+    [self.tableView performSelector:@selector(reloadData) withObject:nil afterDelay:2.0];
+}
+
+- (void)didFailedgetDownloadLink:(NSError *)error
+{
     
 }
 

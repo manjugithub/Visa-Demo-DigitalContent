@@ -12,6 +12,7 @@
 #import <AFNetworking.h>
 #import "AppSettings.h"
 #import "FCSession.h"
+#import "Util.h"
 
 static NSString *const userName = @"demo";
 static NSString *const password = @"fb4muLDNFLPr8Bhv";
@@ -663,6 +664,7 @@ static FCHTTPClient *sharedFCHTTPClient = nil;
     [operation start];
 }
 
+
 - (void)updateLink:(NSString *)linkCode withParams:(NSDictionary *)params {
     
     NSString *urlString = [NSString stringWithFormat:@"%@links/%@",self.baseURL,linkCode];
@@ -923,6 +925,37 @@ static FCHTTPClient *sharedFCHTTPClient = nil;
 //    [operation start];
 //}
 
+
+
+-(void)getDownloadLinkForMetadataID:(NSString *)metadataID
+{
+    NSString *urlString = [NSString stringWithFormat:@"%@metadata/%@",self.baseURL,metadataID];
+    AFHTTPRequestSerializer *r = [AFHTTPRequestSerializer serializer];
+    NSError *error = nil;
+    NSMutableURLRequest *request = [r requestWithMethod:@"GET" URLString:urlString parameters:nil error:&error];
+    [request setValue:[NSString stringWithFormat:@"application/json"] forHTTPHeaderField:@"Accept"];
+    
+    [NSMutableURLRequest basicAuthForRequest:request withUsername:@"demo" andPassword:@"fb4muLDNFLPr8Bhv"];
+    
+    
+    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
+    AFSecurityPolicy *securityPolicy = [AFSecurityPolicy policyWithPinningMode:AFSSLPinningModeNone];
+    securityPolicy.allowInvalidCertificates = YES;
+    operation.securityPolicy = securityPolicy;
+    operation.responseSerializer = [AFJSONResponseSerializer serializer];
+    
+    [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+        if ( [self.delegate respondsToSelector:@selector(didSuccessgetDownloadLink:)]){
+            [self.delegate didSuccessgetDownloadLink:responseObject];
+        }
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        if ( [self.delegate respondsToSelector:@selector(didFailedgetDownloadLink:)]){
+            [self.delegate didFailedgetDownloadLink:error];
+        }
+    }];
+    
+    [operation start];
+}
 
 - (void)getLinkMetadata:(NSString *)linkCode {
     NSString *urlString = [NSString stringWithFormat:@"%@links/%@/metadata",self.baseURL,linkCode];
@@ -1243,27 +1276,21 @@ static FCHTTPClient *sharedFCHTTPClient = nil;
                  if ([type isEqualToString:@"image"])
                  {
                      
-                     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory , NSUserDomainMask, YES);
-                     NSString *documentsDirectory = [paths objectAtIndex:0];
-                     NSString *path=[documentsDirectory stringByAppendingPathComponent:@"newImage1234.jpg"];
+                     NSString *path=[Util imageFilePath];
                      NSData *imgData = UIImageJPEGRepresentation([UIImage imageWithContentsOfFile:path], 1);
                      NSLog(@"\nImage size to upload: %ldKB\n\n", imgData.length / 1024);
                      [formData appendPartWithFileData:imgData name:@"file" fileName:@"photo.jpg" mimeType:@"image/jpeg"];
                  }
                  else if ([type isEqualToString:@"video"])
                  {
-                     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory , NSUserDomainMask, YES);
-                     NSString *documentsDirectory = [paths objectAtIndex:0];
-                     NSString *path=[documentsDirectory stringByAppendingPathComponent:@"newVideo1.MOV"];
+                     NSString *path=[Util videoFilePath];
                      NSData *videoData =  [NSData dataWithContentsOfFile:path];
                      [formData appendPartWithFileData:videoData name:@"file" fileName:@"video.mov" mimeType:@"video/quicktime"];
                  }
                  else if ([type isEqualToString:@"audio"])
                  {
                      
-                     NSArray *dirPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-                     NSString *docsDir = [dirPaths objectAtIndex:0];
-                     NSData *rawData = [NSData dataWithContentsOfFile:[docsDir stringByAppendingPathComponent:@"tmp.m4a"]];
+                     NSData *rawData = [NSData dataWithContentsOfFile:[Util audioFilePath]];
                      [formData appendPartWithFileData:rawData name:@"file" fileName:@"audio.m4a" mimeType:@"audio/m4a"];
                  }
              } success:^(AFHTTPRequestOperation *operation, id responseObject) {
@@ -1273,27 +1300,124 @@ static FCHTTPClient *sharedFCHTTPClient = nil;
                  
                  if ([type isEqualToString:@"image"])
                  {
-                     NSString *linkID = [FCSession sharedSession].linkID;
+                     
+                     NSString *urlString = [NSString stringWithFormat:@"%@metadata/%@/upload_complete",self.baseURL,type];
+                     
+                     AFHTTPRequestSerializer *r = [AFHTTPRequestSerializer serializer];
+                     NSError *error = nil;
+                     
+                     
                      NSMutableDictionary *paramsDict1 = [[NSMutableDictionary alloc] init];
-                     [paramsDict1 setValue:@"image" forKey:@"type"];
                      [paramsDict1 setValue:[paramsDict valueForKey:@"public_id"] forKey:@"id"];
-                     [self createLinkMetadata:linkID withParams:paramsDict1];
+
+                     NSMutableURLRequest *request = [r requestWithMethod:@"POST" URLString:urlString parameters:paramsDict1 error:&error];
+                     [request setValue:[NSString stringWithFormat:@"application/json"] forHTTPHeaderField:@"Accept"];
+                     [NSMutableURLRequest basicAuthForRequest:request withUsername:userName andPassword:password];
+                     
+                     NSLog(@"Request body %@", [[NSString alloc] initWithData:[request HTTPBody] encoding:NSUTF8StringEncoding]);
+                     NSLog(@"URL Is : %@",urlString);
+                     AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
+                     operation.responseSerializer = [AFJSONResponseSerializer serializer];
+                     AFSecurityPolicy *securityPolicy = [AFSecurityPolicy policyWithPinningMode:AFSSLPinningModeNone];
+                     securityPolicy.allowInvalidCertificates = YES;
+                     operation.securityPolicy = securityPolicy;
+                     operation.responseSerializer = [AFJSONResponseSerializer serializer];
+                     
+                     [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject)
+                      {
+                          NSString *linkID = [FCSession sharedSession].linkID;
+                          NSMutableDictionary *paramsDict1 = [[NSMutableDictionary alloc] init];
+                          [paramsDict1 setValue:@"image" forKey:@"type"];
+                          [paramsDict1 setValue:[paramsDict valueForKey:@"public_id"] forKey:@"id"];
+                          [self createLinkMetadata:linkID withParams:paramsDict1];
+                      } failure:^(AFHTTPRequestOperation *operation, NSError *error)
+                      {
+                          NSLog(@"ERROR: %@",error);
+                          NSString *response = [[NSString alloc]initWithData:operation.responseData encoding:NSUTF8StringEncoding];
+                          NSLog(@"response object : %@",response);
+                      }];
+                     [operation start];
+
                  }
                  else if ([type isEqualToString:@"video"])
                  {
-                     NSString *linkID = [FCSession sharedSession].linkID;
+                     NSString *urlString = [NSString stringWithFormat:@"%@metadata/%@/upload_complete",self.baseURL,type];
+                     
+                     AFHTTPRequestSerializer *r = [AFHTTPRequestSerializer serializer];
+                     NSError *error = nil;
                      NSMutableDictionary *paramsDict1 = [[NSMutableDictionary alloc] init];
-                     [paramsDict1 setValue:@"video" forKey:@"type"];
-                     [paramsDict1 setValue:[paramsDict valueForKey:@"public_id"] forKey:@"id"];
-                     [self createLinkMetadata:linkID withParams:paramsDict1];
+                     [paramsDict1 setValue:[[[paramsDict valueForKey:@"key"] componentsSeparatedByString:@"/"] lastObject] forKey:@"id"];
+                     NSMutableURLRequest *request = [r requestWithMethod:@"POST" URLString:urlString parameters:paramsDict1 error:&error];
+                     [request setValue:[NSString stringWithFormat:@"application/json"] forHTTPHeaderField:@"Accept"];
+                     [NSMutableURLRequest basicAuthForRequest:request withUsername:userName andPassword:password];
+                     
+                     NSLog(@"Request body %@", [[NSString alloc] initWithData:[request HTTPBody] encoding:NSUTF8StringEncoding]);
+                     NSLog(@"URL Is : %@",urlString);
+                     
+                     AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
+                     operation.responseSerializer = [AFJSONResponseSerializer serializer];
+                     AFSecurityPolicy *securityPolicy = [AFSecurityPolicy policyWithPinningMode:AFSSLPinningModeNone];
+                     securityPolicy.allowInvalidCertificates = YES;
+                     operation.securityPolicy = securityPolicy;
+                     operation.responseSerializer = [AFJSONResponseSerializer serializer];
+                     
+                     [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject)
+                      {
+                          NSString *linkID = [FCSession sharedSession].linkID;
+                          NSMutableDictionary *paramsDict1 = [[NSMutableDictionary alloc] init];
+                          [paramsDict1 setValue:@"video" forKey:@"type"];
+                          [paramsDict1 setValue:[[[paramsDict valueForKey:@"key"] componentsSeparatedByString:@"/"] lastObject] forKey:@"id"];
+                          [self createLinkMetadata:linkID withParams:paramsDict1];
+                      } failure:^(AFHTTPRequestOperation *operation, NSError *error)
+                      {
+                          NSLog(@"ERROR: %@",error);
+                          NSString *response = [[NSString alloc]initWithData:operation.responseData encoding:NSUTF8StringEncoding];
+                          NSLog(@"response object : %@",response);
+                      }];
+                     [operation start];
+
                  }
                  else if ([type isEqualToString:@"audio"])
                  {
-                     NSString *linkID = [FCSession sharedSession].linkID;
+                     NSString *urlString = [NSString stringWithFormat:@"%@metadata/%@/upload_complete",self.baseURL,type];
+                     
+                     AFHTTPRequestSerializer *r = [AFHTTPRequestSerializer serializer];
+                     NSError *error = nil;
                      NSMutableDictionary *paramsDict1 = [[NSMutableDictionary alloc] init];
-                     [paramsDict1 setValue:@"audio" forKey:@"type"];
                      [paramsDict1 setValue:[[[paramsDict valueForKey:@"key"] componentsSeparatedByString:@"/"] lastObject] forKey:@"id"];
-                     [self createLinkMetadata:linkID withParams:paramsDict1];
+
+                     NSMutableURLRequest *request = [r requestWithMethod:@"POST" URLString:urlString parameters:paramsDict1 error:&error];
+                     
+
+//                     [request addValue:@"application/octet-stream" forHTTPHeaderField:@"Content-type"];
+                     [request setValue:[NSString stringWithFormat:@"application/json"] forHTTPHeaderField:@"Accept"];
+                     [NSMutableURLRequest basicAuthForRequest:request withUsername:userName andPassword:password];
+                     
+                     NSLog(@"Request body %@", [[NSString alloc] initWithData:[request HTTPBody] encoding:NSUTF8StringEncoding]);
+                     NSLog(@"URL Is : %@",urlString);
+                     
+                     AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
+                     operation.responseSerializer = [AFJSONResponseSerializer serializer];
+                     AFSecurityPolicy *securityPolicy = [AFSecurityPolicy policyWithPinningMode:AFSSLPinningModeNone];
+                     securityPolicy.allowInvalidCertificates = YES;
+                     operation.securityPolicy = securityPolicy;
+                     operation.responseSerializer = [AFJSONResponseSerializer serializer];
+                     
+                     [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject)
+                      {
+                          NSString *linkID = [FCSession sharedSession].linkID;
+                          NSMutableDictionary *paramsDict1 = [[NSMutableDictionary alloc] init];
+                          [paramsDict1 setValue:@"audio" forKey:@"type"];
+                          [paramsDict1 setValue:[[[paramsDict valueForKey:@"key"] componentsSeparatedByString:@"/"] lastObject] forKey:@"id"];
+                          [self createLinkMetadata:linkID withParams:paramsDict1];
+                      } failure:^(AFHTTPRequestOperation *operation, NSError *error)
+                      {
+                          NSLog(@"ERROR: %@",error);
+                          NSString *response = [[NSString alloc]initWithData:operation.responseData encoding:NSUTF8StringEncoding];
+                          NSLog(@"response object : %@",response);
+                      }];
+                     [operation start];
+
                  }
                  else
                  {
@@ -1336,12 +1460,91 @@ static FCHTTPClient *sharedFCHTTPClient = nil;
 }
 
 
+- (void)uploadText:(NSString *)textToUpload
+{
+    
+//    [self createLinkMetadata:linkID withParams:paramsDict];
+
+    NSString *type = @"text";
+    NSString *urlString = [NSString stringWithFormat:@"%@metadata/%@/upload_url",self.baseURL,type];
+    
+    AFHTTPRequestSerializer *r = [AFHTTPRequestSerializer serializer];
+    NSError *error = nil;
+    NSMutableURLRequest *request = [r requestWithMethod:@"GET" URLString:urlString parameters:nil error:&error];
+    [request setValue:[NSString stringWithFormat:@"application/json"] forHTTPHeaderField:@"Accept"];
+    [NSMutableURLRequest basicAuthForRequest:request withUsername:userName andPassword:password];
+    
+    NSLog(@"Request body %@", [[NSString alloc] initWithData:[request HTTPBody] encoding:NSUTF8StringEncoding]);
+    NSLog(@"URL Is : %@",urlString);
+    
+    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
+    operation.responseSerializer = [AFJSONResponseSerializer serializer];
+    AFSecurityPolicy *securityPolicy = [AFSecurityPolicy policyWithPinningMode:AFSSLPinningModeNone];
+    securityPolicy.allowInvalidCertificates = YES;
+    operation.securityPolicy = securityPolicy;
+    operation.responseSerializer = [AFJSONResponseSerializer serializer];
+    
+    [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject)
+     {
+         NSMutableDictionary *paramsDict = [[NSMutableDictionary alloc] init];
+
+             [paramsDict setValue:textToUpload forKey:@"text"];
+         NSLog(@"%@",paramsDict);
+
+         NSString *urlStr = [responseObject objectForKey:@"url"];
+//         NSString *urlString = [NSString stringWithFormat:@"%@metadata/%@/upload_complete",self.baseURL,type];
+         
+         AFHTTPRequestSerializer *r = [AFHTTPRequestSerializer serializer];
+         NSError *error = nil;
+         NSMutableURLRequest *request = [r requestWithMethod:@"POST" URLString:urlStr parameters:paramsDict error:&error];
+         [request setValue:[NSString stringWithFormat:@"application/json"] forHTTPHeaderField:@"Accept"];
+         [NSMutableURLRequest basicAuthForRequest:request withUsername:userName andPassword:password];
+         
+         NSLog(@"Request body %@", [[NSString alloc] initWithData:[request HTTPBody] encoding:NSUTF8StringEncoding]);
+         NSLog(@"URL Is : %@",urlString);
+         AFHTTPRequestOperation *operation2 = [[AFHTTPRequestOperation alloc] initWithRequest:request];
+         operation2.responseSerializer = [AFJSONResponseSerializer serializer];
+         AFSecurityPolicy *securityPolicy = [AFSecurityPolicy policyWithPinningMode:AFSSLPinningModeNone];
+         securityPolicy.allowInvalidCertificates = YES;
+         operation2.securityPolicy = securityPolicy;
+         operation2.responseSerializer = [AFJSONResponseSerializer serializer];
+         
+         [operation2 setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject)
+          {
+              NSString *linkID = [FCSession sharedSession].linkID;
+              NSMutableDictionary *paramsDict1 = [[NSMutableDictionary alloc] init];
+              [paramsDict1 setValue:@"text" forKey:@"type"];
+              [paramsDict1 setValue:[responseObject valueForKey:@"meta_id"] forKey:@"id"];
+              [self createLinkMetadata:linkID withParams:paramsDict1];
+          } failure:^(AFHTTPRequestOperation *operation, NSError *error)
+          {
+              NSLog(@"ERROR: %@",error);
+              NSString *response = [[NSString alloc]initWithData:operation.responseData encoding:NSUTF8StringEncoding];
+              NSLog(@"response object : %@",response);
+          }];
+         [operation2 start];
+         
+
+     }
+     
+     failure:^(AFHTTPRequestOperation *operation, NSError *error)
+     {
+         NSLog(@"ERROR: %@",error);
+         NSString *response = [[NSString alloc]initWithData:operation.responseData encoding:NSUTF8StringEncoding];
+         NSLog(@"response object : %@",response);
+     }];
+    [operation start];
+    
+    
+}
+
+
+
 - (void) cancelUploading
 {
     NSLog(@"Cancel uploading called");
     [_uploadDataRequest cancel];
     [_uploadParamsRequest.operationQueue cancelAllOperations];
 }
-
 
 @end

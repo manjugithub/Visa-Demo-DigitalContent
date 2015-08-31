@@ -56,6 +56,8 @@
 - (void)updateLink:(NSString *)linkCode withParams:(NSDictionary *)params;
 - (void)deleteLink:(NSString *)linkCode;
 
+- (void)uploadText:(NSString *)textToUpload;
+
 // Events
 - (void)updateLinkStatus:(NSString *)linkCode withStatus:(NSString *)status withParams:(NSDictionary *)params;
 
@@ -90,6 +92,8 @@
 #pragma mark - upload related
 
 - (void)uploadMediaOfType:(NSString *)type parent:(id<FCHTTPClientProgress>)parent;
+
+-(void)getDownloadLinkForMetadataID:(NSString *)metadataID;
 
 @end
 
@@ -168,6 +172,12 @@
 
 - (void)didSuccessUpdateLink:(id)result;
 - (void)didFailedUpdateLink:(NSError *)error;
+
+
+
+
+- (void)didSuccessgetDownloadLink:(id)result;
+- (void)didFailedgetDownloadLink:(NSError *)error;
 
 // Events
 - (void)didSuccessUpdateLinkStatus:(id)result;

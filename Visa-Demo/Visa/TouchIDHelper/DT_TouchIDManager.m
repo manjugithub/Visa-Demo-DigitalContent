@@ -116,7 +116,7 @@ static DT_TouchIDManager *sharedManager = nil;
         OSStatus userPresenceStatus = SecItemCopyMatching((__bridge CFDictionaryRef)query, &result);
         
         // Ignore the found content of the key chain entry (the dummy password) and only evaluate the return code.
-        if(1) //(noErr == userPresenceStatus)
+        if(noErr == userPresenceStatus)
         {
             NSLog(@"Fingerprint or device passcode validated.");
             [self.delegate touchIDDidSuccessAuthenticateUser];

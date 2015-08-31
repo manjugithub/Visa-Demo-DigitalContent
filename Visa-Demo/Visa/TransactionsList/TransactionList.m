@@ -114,6 +114,8 @@
 }
 
 
+
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *MyIdentifier = @"MyIdentifier";
     MyIdentifier = @"tblCellView";
@@ -124,7 +126,7 @@
         cell = tblCell;
     }
     [cell assignMyNum:indexPath.row];
-    cell.layoutMargins = UIEdgeInsetsZero;
+//    cell.layoutMargins = UIEdgeInsetsZero;
     
     
     FCLink *link = [transactionList objectAtIndex:indexPath.row];
@@ -231,6 +233,22 @@
 }
 
 
+-(void)setSelectedCell:(id)inSelectedCell;
+{
+    
+//    self.selectCell.contentViewRightConstraint.constant = 0;
+//    self.selectCell.contentViewLeftConstraint.constant = 0;
+
+    [self.selectCell resetConstraintContstantsToZero:YES notifyDelegateDidClose:YES];
+    [self performSelector:@selector(setCell:) withObject:inSelectedCell afterDelay:1.0];
+}
+
+
+-(void)setCell:(id)inSelectedCell
+{
+    self.selectCell = inSelectedCell;
+
+}
 - (void)buttonItemActionForItem:(NSDictionary *)info{
     NSLog(@"buttonItemActionForItem:::: %@", info);
 }

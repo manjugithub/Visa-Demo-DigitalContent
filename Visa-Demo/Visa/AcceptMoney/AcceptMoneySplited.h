@@ -43,7 +43,7 @@
     IBOutlet UILabel *__weak splitedSpendviaQRCodeLabel;
     
     IBOutlet UIView *__weak QRView;
-    
+    CGFloat qrlinkHeight;
     FCLink *link;
     YFCurrencyConverter *currencyConversion;
     NSMutableArray *rainBowArray;

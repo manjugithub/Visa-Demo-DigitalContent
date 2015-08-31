@@ -7,7 +7,7 @@
 //
 
 #import "VideoPlayer.h"
-
+#import "Util.h"
 @interface VideoPlayer ()
 - (IBAction)doneButtonClicked:(id)sender;
 - (IBAction)backButtonClicked:(id)sender;
@@ -53,7 +53,7 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    self.movieController = [[MPMoviePlayerController alloc] initWithContentURL:[self movieURL]];
+    self.movieController = [[MPMoviePlayerController alloc] initWithContentURL:[NSURL fileURLWithPath:[Util videoFilePath]]];
     [self.movieController setAllowsAirPlay:YES];
     [self.movieController.backgroundView setBackgroundColor:[UIColor blackColor]];
     self.movieController.controlStyle = MPMovieControlStyleEmbedded;

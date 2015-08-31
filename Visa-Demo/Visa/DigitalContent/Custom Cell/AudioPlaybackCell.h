@@ -9,8 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "DigitalContentCreationVC.h"
 #import "TGCDownloadProgressIndicator.h"
-
-@interface AudioPlaybackCell : UITableViewCell<AVAudioPlayerDelegate,TGCDownloadProgressIndicatorCallback,FCHTTPClientProgress>
+#import "AFDownloadRequestOperation.h"
+@interface AudioPlaybackCell : UITableViewCell<AVAudioPlayerDelegate,TGCDownloadProgressIndicatorCallback,FCHTTPClientProgress,FCHTTPClientDelegate,TGCDownloadProgressIndicatorCallback>
 @property (nonatomic, weak) DigitalContentCreationVC *ParentVC;
 @property (weak, nonatomic) IBOutlet UILabel *endTimeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *startTimeLabel;
@@ -21,6 +21,17 @@
 @property (weak, nonatomic) IBOutlet UIView *containerView;
 @property (strong , nonatomic) NSTimer *timer;
 @property (assign, nonatomic) CGRect scrubRect;
+
+
+
+@property (nonatomic, strong) NSString *mediaURL,*mediaID;
+@property (nonatomic, strong) NSDate *lastProgressUpdateTime;
+@property (nonatomic, assign) float progressValue;
+@property (nonatomic, assign) id  progressDelegate;
+@property (nonatomic, strong) NSNumber *fileSize;
+@property (nonatomic, weak) AFDownloadRequestOperation *downloadOp;
+@property (nonatomic, assign) int downloadRequestCount;
+
 -(void)setDatasource:(NSMutableDictionary *)inDataDict;
 - (IBAction)closeDigitalCell:(id)sender;
 - (IBAction)playAudio:(id)sender;
@@ -30,5 +41,7 @@
 @property (nonatomic,weak) AFHTTPRequestOperation *uploadDataRequest;
 @property (nonatomic,assign) BOOL isDownloading;
 -(void)setFinalDatasource:(NSMutableDictionary *)inDataDict;
+-(void)downloadMedia:(NSMutableDictionary *)inDataDict;
+-(void)getAudioLink:(NSMutableDictionary *)inDataDict;
 
 @end

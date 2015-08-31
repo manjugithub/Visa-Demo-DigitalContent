@@ -13,6 +13,7 @@
 - (void)buttonRepeatActionForItem:(FCLink *)info;
 - (void)buttonItemActionForItem:(NSDictionary *)info;
 - (void)buttonItemActionForLink:(FCLink *)link;
+-(void)setSelectedCell:(id)inSelectedCell;
 @end
 
 @interface TransactionListCell : UITableViewCell <UIGestureRecognizerDelegate>{
@@ -51,5 +52,7 @@
 
 -(IBAction)pressRepeat:(id)sender;
 -(IBAction)pressItem:(id)sender;
+
+- (void)resetConstraintContstantsToZero:(BOOL)animated notifyDelegateDidClose:(BOOL)notifyDelegate;
 
 @end

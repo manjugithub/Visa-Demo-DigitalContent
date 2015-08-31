@@ -7,6 +7,10 @@
 //
 
 #import "AudioPlaybackCell.h"
+#import "Util.h"
+#import "NSMutableURLRequest+BasicAuth.h"
+#import "FCSession.h"
+#import "UIImageView+WebCache.h"
 
 @implementation AudioPlaybackCell
 
@@ -28,12 +32,96 @@
     [self uploadSuccess];
 }
 
+
+
+- (void)didSuccessgetDownloadLink:(id)result
+{
+    /*
+    {
+        id = "b559c36a-48c0-4b5d-a105-52de13bb5468";
+        params = "<null>";
+        url = "https://dew-visa-demo.s3.amazonaws.com/audios/54cb3376-2e1a-4019-96c5-b59f4bbf7e71.mp3?Expires=1439887374&AWSAccessKeyId=AKIAJZOPGO7E244QQYJA&Signature=TTOOfN87ELtU4mvsD8bJcjj6iAY%3D";
+    }
+    */
+    
+    NSLog(@"Audio url ==> %@",[result valueForKey:@"url"]);
+    [self startDownloading:[result valueForKey:@"url"] parent:self];
+    
+    
+}
+
+- (void)didFailedgetDownloadLink:(NSError *)error
+{
+    
+}
+
+
+-(void)getAudioLink:(NSMutableDictionary *)inDataDict
+{
+    if(self.isDownloading)
+    {
+        return;
+    }
+    [self setProfilePicture];
+    NSString *downloadPath = [Util audioFilePath];
+    NSString *tempNAme = [NSString stringWithFormat:@"temp_%@",@"audio.mp3"];
+    
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    [fileManager removeItemAtPath:[self mediaFolderPathForFileName:tempNAme] error:nil];
+    
+    if ([fileManager fileExistsAtPath:downloadPath])
+    {
+        [self uploadSuccess];
+        return;
+    }
+
+    
+    [self.downloadIndicator updateDownloadStatus:eDownloadStarted];
+    self.containerView.hidden = YES;
+    self.playPauseBtn.enabled = NO;
+    self.isDownloading = YES;
+
+    {
+        NSString *urlString = [NSString stringWithFormat:@"%@metadata/%@",[FCHTTPClient sharedFCHTTPClient].baseURL,[inDataDict valueForKey:@"id"]];
+        AFHTTPRequestSerializer *r = [AFHTTPRequestSerializer serializer];
+        NSError *error = nil;
+        NSMutableURLRequest *request = [r requestWithMethod:@"GET" URLString:urlString parameters:nil error:&error];
+        [request setValue:[NSString stringWithFormat:@"application/json"] forHTTPHeaderField:@"Accept"];
+        
+        [NSMutableURLRequest basicAuthForRequest:request withUsername:@"demo" andPassword:@"fb4muLDNFLPr8Bhv"];
+        
+        
+        AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
+        AFSecurityPolicy *securityPolicy = [AFSecurityPolicy policyWithPinningMode:AFSSLPinningModeNone];
+        securityPolicy.allowInvalidCertificates = YES;
+        operation.securityPolicy = securityPolicy;
+        operation.responseSerializer = [AFJSONResponseSerializer serializer];
+        
+        [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject)
+         {
+             NSLog(@"Audio URL%@",[responseObject valueForKey:@"url"]);
+             [self startDownloading:[responseObject valueForKey:@"url"] parent:self];
+             
+         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+         }];
+        
+        [operation start];
+    }
+}
+
+-(void)downloadMedia:(NSMutableDictionary *)inDataDict
+{
+    
+}
+
+
 -(void)setDatasource:(NSMutableDictionary *)inDataDict
 {
+    [self setProfilePicture];
+
     [self.downloadIndicator updateDownloadStatus:eDownloadStarted];
-    NSArray *dirPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *docsDir = [dirPaths objectAtIndex:0];
-    self.audioPlayer = [[AVAudioPlayer alloc] initWithData:[NSData dataWithContentsOfFile:[docsDir stringByAppendingPathComponent:@"tmp.m4a"]] error:nil];
+
+    self.audioPlayer = [[AVAudioPlayer alloc] initWithData:[NSData dataWithContentsOfFile:[Util audioFilePath]] error:nil];
     self.audioPlayer.delegate = self;
     [self.audioPlayer setVolume:1.0];
     [self.audioPlayer prepareToPlay];
@@ -69,12 +157,9 @@
         [self.playPauseBtn setImage:[UIImage imageNamed:@"video-pause-button.png"] forState:UIControlStateNormal];
         [sender setTag:1];
         
-        NSArray *dirPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-        NSString *docsDir = [dirPaths objectAtIndex:0];
-        
         if (nil == self.audioPlayer)
         {
-            self.audioPlayer = [[AVAudioPlayer alloc] initWithData:[NSData dataWithContentsOfFile:[docsDir stringByAppendingPathComponent:@"tmp.m4a"]] error:nil];
+            self.audioPlayer = [[AVAudioPlayer alloc] initWithData:[NSData dataWithContentsOfFile:[Util audioFilePath]] error:nil];
             self.audioPlayer.delegate = self;
             [self.audioPlayer setVolume:1.0];
             [self.audioPlayer prepareToPlay];
@@ -153,4 +238,136 @@
     self.uploadDataRequest = op;
 }
 
+
+
+-(void)startDownloading:(NSString *)url parent:(id<FCHTTPClientProgress>)parent
+{
+    //     NSString *downloadPath = self.filePath;
+    
+    
+    NSString *downloadPath = [Util audioFilePath];
+    NSString *tempNAme = [NSString stringWithFormat:@"temp_%@",@"audio.mp3"];
+    
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    [fileManager removeItemAtPath:[self mediaFolderPathForFileName:tempNAme] error:nil];
+    
+    if ([fileManager fileExistsAtPath:downloadPath])
+    {
+        [self uploadSuccess];
+        return;
+    }
+    
+    // request the video file from server
+    //    NSString *downloadURL = @"http://anon.eastbaymediac.m7z.net/anon.eastbaymediac.m7z.net/teachingco/CourseGuideBooks/DG9344_B618F.PDF";
+    
+    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:url]];
+    self.downloadOp = [[AFDownloadRequestOperation alloc] initWithRequest:request targetPath:downloadPath tempFileName:tempNAme shouldResume:YES];
+    
+    __weak AudioPlaybackCell* weakSelf = self;
+    
+    // done saving!
+    [self.downloadOp setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject)
+     {
+         NSLog(@"Done downloading %@  for lecture ID ==> %@", downloadPath,self.mediaID);
+         [weakSelf uploadSuccess];
+         
+     } failure:^(AFHTTPRequestOperation *operation, NSError *error)
+     {
+         NSFileManager *fileManager = [NSFileManager defaultManager];
+         if ([fileManager fileExistsAtPath:downloadPath])
+         {
+             [fileManager removeItemAtPath:[self mediaFolderPathForFileName:tempNAme] error:nil];
+             [weakSelf uploadSuccess];
+         }
+         else
+         {
+             [weakSelf uploadFailed];
+         }
+         NSLog(@"Error: %ld", (long)[error code]);
+     }];
+    
+    // set the progress
+    [self.downloadOp setProgressiveDownloadProgressBlock:^(AFDownloadRequestOperation *operation, NSInteger bytesRead, long long totalBytesRead, long long totalBytesExpected, long long totalBytesReadForFile, long long totalBytesExpectedToReadForFile)
+     {
+         float progress = ((float)totalBytesReadForFile) / totalBytesExpectedToReadForFile;
+         NSLog(@"progress: %f", progress);
+         weakSelf.progressValue = progress;
+         [weakSelf updateProgress:progress];
+     }];
+    
+    [self.downloadOp start];
+}
+
+
+//Return file path for document folder
+-(NSString*)downloadedMediaPath:(NSString*)filename
+{
+    NSString* documentsPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+    NSString* filePath = [documentsPath stringByAppendingPathComponent:filename];
+    //    [PWUtilities addSkipBackupAttributeToItemAtPath:[filePath UTF8String]];
+    return filePath;
+}
+
+
+-(NSString *)mediaFolderPath;
+{
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,NSUserDomainMask, YES);
+    NSString *documentsPath = [paths objectAtIndex:0];
+    NSString *guideBookPAth = [documentsPath stringByAppendingPathComponent:@"MediaFiles"];
+    //    [PWUtilities addSkipBackupAttributeToItemAtPath:[guideBookPAth UTF8String]];
+    return guideBookPAth;
+}
+
+-(NSString *)mediaFolderPathForFileName:(NSString *)name
+{
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,NSUserDomainMask, YES);
+    NSString *documentsPath = [paths objectAtIndex:0];
+    NSString *guideBookPAth = [documentsPath stringByAppendingPathComponent:@"MediaFiles"];
+    if(![[NSFileManager defaultManager] fileExistsAtPath:guideBookPAth])
+    {
+        [[NSFileManager defaultManager] createDirectoryAtPath:guideBookPAth withIntermediateDirectories:NO attributes:nil error:nil];
+    }
+    NSString *filePath = [guideBookPAth stringByAppendingPathComponent:[NSString stringWithFormat:@"%@",name]];
+    
+    //    [PWUtilities addSkipBackupAttributeToItemAtPath:[filePath UTF8String]];
+    return filePath;
+}
+
+
+-(void)setProfilePicture
+{
+    NSString *imageProfile = [[FCSession sharedSession].recipient getProfilePhoto];
+    if ( imageProfile == nil)
+    {
+        NSString *photoURL = [[FCSession sharedSession] getRecipientPhoto];
+        if(nil == photoURL)
+        {
+            CAGradientLayer *gradient = [CAGradientLayer layer];
+            gradient.frame = self.frame;
+            UIColor *firstColor = [UIColor colorWithRed:0.863f
+                                                  green:0.141f
+                                                   blue:0.376f
+                                                  alpha:1.0f];
+            UIColor *secondColor = [UIColor colorWithRed:0.518f
+                                                   green:0.216f
+                                                    blue:0.486f
+                                                   alpha:1.0f];
+            
+            gradient.colors = [NSArray arrayWithObjects:(id)firstColor.CGColor, (id)secondColor.CGColor, nil];
+            [self.profilePicture.layer insertSublayer:gradient atIndex:0];
+            
+        }
+        else
+        {
+            [self.profilePicture sd_setImageWithURL:[NSURL URLWithString:photoURL]];
+        }
+    }
+    else{
+        [self.profilePicture sd_setImageWithURL:[NSURL URLWithString:imageProfile]];
+    }
+    
+    self.profilePicture.layer.masksToBounds = YES;
+    self.profilePicture.layer.cornerRadius = self.profilePicture.frame.size.width/2;
+    
+}
 @end

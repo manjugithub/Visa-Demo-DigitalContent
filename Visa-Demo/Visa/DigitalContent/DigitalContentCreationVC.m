@@ -13,23 +13,24 @@
 #import "AudioPlaybackCell.h"
 #import "AppDelegate.h"
 #import "FCSession.h"
+#import "Util.h"
 @interface DigitalContentCreationVC ()
 @property (weak, nonatomic) IBOutlet UIButton *backBtn;
 
 @property (weak, nonatomic) IBOutlet UIButton *cancelBtn;
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UITableView *contentTableView;
-@property (weak, nonatomic) IBOutlet UIView *customTabbar;
-@property (weak, nonatomic) IBOutlet UIButton *messageButton;
-@property (weak, nonatomic) IBOutlet UIButton *photoCaptureBtn;
-@property (weak, nonatomic) IBOutlet UIButton *videoRecordBtn;
-@property (weak, nonatomic) IBOutlet UIButton *audioRecordBtn;
+@property (weak, nonatomic) IBOutlet UIView *customTabbar,*tabbar1;
+@property (weak, nonatomic) IBOutlet UIButton *messageButton,*messageButton1;
+@property (weak, nonatomic) IBOutlet UIButton *photoCaptureBtn,*photoCaptureBtn1;
+@property (weak, nonatomic) IBOutlet UIButton *videoRecordBtn,*videoRecordBtn1;
+@property (weak, nonatomic) IBOutlet UIButton *audioRecordBtn,*audioRecordBtn1;
 @property (weak, nonatomic) IBOutlet UIImageView *tempImageview;
 @property (weak, nonatomic) IBOutlet UITextView *messageTextView;
 @property (strong, nonatomic) NSMutableArray *dataSourceDict;
 @property (assign, nonatomic) CGRect tableRect,tabBarRect,textViewRect;
 @property (assign, nonatomic) CGSize keyboardSize;
-@property (assign, nonatomic) BOOL shouldHideKeyBoard,isFirstLaunch;
+@property (assign, nonatomic) BOOL shouldHideKeyBoard,isFirstLaunch,shouldSave;
 @property (assign, nonatomic) int counter;
 @property (strong , nonatomic) NSTimer *timer;
 - (IBAction)recordAudio:(id)sender;
@@ -76,6 +77,22 @@ static NSString * const reuseIdentifier = @"Cell";
     
 //    self.messageTextView.layer.cornerRadius = 5.0;
     self.dataSourceDict = [[NSMutableArray alloc] init];
+
+//    NSBundle *bundle = [NSBundle mainBundle];
+//    NSString *moviePath = [bundle pathForResource:@"video" ofType:@"mp4"];
+//    UISaveVideoAtPathToSavedPhotosAlbum(moviePath, self, @selector(video:didFinishSavingWithError:contextInfo:), nil);
+
+    
+    NSURL *tmpFileUrl = [NSURL fileURLWithPath:[Util audioFilePath]];
+    NSDictionary *recordSettings = [NSDictionary dictionaryWithObjectsAndKeys:
+                                    [NSNumber numberWithInt: kAudioFormatMPEG4AAC], AVFormatIDKey,
+                                    [NSNumber numberWithFloat:16000.0], AVSampleRateKey,
+                                    [NSNumber numberWithInt: 1], AVNumberOfChannelsKey,
+                                    nil];
+    NSError *error = nil;
+    recorder = [[AVAudioRecorder alloc] initWithURL:tmpFileUrl settings:recordSettings error:&error];
+    [recorder prepareToRecord];
+
 }
 
 - (void)didReceiveMemoryWarning {
@@ -83,6 +100,13 @@ static NSString * const reuseIdentifier = @"Cell";
     // Dispose of any resources that can be recreated.
 }
 
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+
+    self.customTabbar.hidden = YES;
+}
 
 -(void)viewDidAppear:(BOOL)animated
 {
@@ -97,6 +121,8 @@ static NSString * const reuseIdentifier = @"Cell";
         [self.view bringSubviewToFront:self.messageTextView];
         self.isFirstLaunch = NO;
     }
+    
+    [self rearrangeTabbarButton];
 
 }
 /*
@@ -197,10 +223,12 @@ static NSString * const reuseIdentifier = @"Cell";
                 if ( [UIImagePickerController isSourceTypeAvailable: UIImagePickerControllerSourceTypeCamera]&& buttonIndex == 0)
                 {
                     imagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;
+                    self.shouldSave = YES;
                 }
                 else
                 {
                     imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+                    self.shouldSave = NO;
                     
                 }
                 [[self navigationController] presentViewController:imagePicker animated:YES completion:nil];
@@ -232,6 +260,7 @@ static NSString * const reuseIdentifier = @"Cell";
                         imagePicker.cameraCaptureMode = UIImagePickerControllerCameraCaptureModeVideo;
                         imagePicker.mediaTypes = [[NSArray alloc] initWithObjects: (NSString *) kUTTypeMovie, nil];
                         
+                        self.shouldSave = YES;
                     }
                     else
                     {
@@ -239,6 +268,7 @@ static NSString * const reuseIdentifier = @"Cell";
                         imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
                         imagePicker.mediaTypes =
                         [[NSArray alloc] initWithObjects: (NSString *) kUTTypeMovie, nil];
+                        self.shouldSave = NO;
                     }
                     [[self navigationController] presentViewController:imagePicker animated:YES completion:nil];
                 }
@@ -272,9 +302,7 @@ static NSString * const reuseIdentifier = @"Cell";
     
     if ([[info valueForKey:UIImagePickerControllerMediaType] isEqualToString:@"public.movie"])
     {
-        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory , NSUserDomainMask, YES);
-        NSString *documentsDirectory = [paths objectAtIndex:0];
-        NSString *path=[documentsDirectory stringByAppendingPathComponent:@"newVideo1.MOV"];
+        NSString *path=[Util videoFilePath];
         
         if ([[NSFileManager defaultManager] fileExistsAtPath:path] == YES)
         {
@@ -283,7 +311,8 @@ static NSString * const reuseIdentifier = @"Cell";
         
         [[NSFileManager defaultManager] copyItemAtPath:[(NSURL *)[info valueForKey:UIImagePickerControllerMediaURL] path] toPath:path error:nil];
         
-        
+
+
         AVURLAsset *asset1 = [[AVURLAsset alloc] initWithURL:[info valueForKey:UIImagePickerControllerMediaURL] options:nil];
         AVAssetImageGenerator *generate1 = [[AVAssetImageGenerator alloc] initWithAsset:asset1];
         generate1.appliesPreferredTrackTransform = YES;
@@ -311,16 +340,16 @@ static NSString * const reuseIdentifier = @"Cell";
             [self.dataSourceDict addObject:[[NSMutableDictionary alloc] initWithObjectsAndKeys:path,@"path",one,@"image",@"Video",@"type",nil]];
         }
         
-        UISaveVideoAtPathToSavedPhotosAlbum(path, self, @selector(video:didFinishSavingWithError:contextInfo:), nil);
+        if(self.shouldSave == YES)
+            UISaveVideoAtPathToSavedPhotosAlbum(path, self, @selector(video:didFinishSavingWithError:contextInfo:), nil);
+        
         
     }
     else
     {
         UIImage *image = [info valueForKey:UIImagePickerControllerOriginalImage];
         NSData *imageData = UIImageJPEGRepresentation(image, 0.5);
-        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory , NSUserDomainMask, YES);
-        NSString *documentsDirectory = [paths objectAtIndex:0];
-        NSString *path=[documentsDirectory stringByAppendingPathComponent:@"newImage1234.jpg"];
+        NSString *path = [Util imageFilePath];
         [imageData writeToFile:path atomically:YES];
 
         BOOL imageAdded = NO;
@@ -339,7 +368,9 @@ static NSString * const reuseIdentifier = @"Cell";
             [self.dataSourceDict addObject:[[NSMutableDictionary alloc] initWithObjectsAndKeys:path,@"path",[info objectForKey:UIImagePickerControllerEditedImage],@"image",@"Image",@"type",nil]];
         }
 
-        UIImageWriteToSavedPhotosAlbum([info objectForKey:UIImagePickerControllerEditedImage], nil, nil, nil);
+        if(self.shouldSave == YES)
+            UIImageWriteToSavedPhotosAlbum([info objectForKey:UIImagePickerControllerEditedImage], nil, nil, nil);
+
 
 
     }
@@ -455,11 +486,25 @@ static NSString * const reuseIdentifier = @"Cell";
     NSMutableDictionary *paramsDict1 = [[NSMutableDictionary alloc] init];
     [paramsDict1 setValue:@"text" forKey:@"type"];
     [paramsDict1 setValue:self.messageTextView.text forKey:@"text"];
-    [[FCHTTPClient sharedFCHTTPClient] uploadMediaOfType:@"text" parent:self];
+    
+    [FCHTTPClient sharedFCHTTPClient].delegate = self;
+    [[FCHTTPClient sharedFCHTTPClient] uploadText:self.messageTextView.text];
+//    [[FCHTTPClient sharedFCHTTPClient] createLinkMetadata:linkID withParams:paramsDict1];
 
     [self.contentTableView reloadData];
 
 }
+
+- (void)didSuccessUpdateLink:(id)result
+{
+    
+}
+- (void)didFailedUpdateLink:(NSError *)error
+{
+    
+}
+
+
 
 
 #pragma mark - TableView datasource and delegates
@@ -526,7 +571,7 @@ static NSString * const reuseIdentifier = @"Cell";
 {
     UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"DigitalContent" bundle:nil];
     VideoPlayer *videoController = [mainStoryboard instantiateViewControllerWithIdentifier:@"VideoPlayer"];
-    videoController.movieURL = [NSURL fileURLWithPath:[inDict valueForKey:@"path"]];
+    videoController.movieURL = [NSURL fileURLWithPath:[Util videoFilePath]];
 
     //    [socialSetup assignParent:self];
     [self.navigationController pushViewController:videoController animated:YES];
@@ -558,15 +603,12 @@ static NSString * const reuseIdentifier = @"Cell";
 {
     [self.recordBtn setImage:[UIImage imageNamed:@"audio_recording.png"] forState:UIControlStateNormal];
 
-    NSArray *dirPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *docsDir = [dirPaths objectAtIndex:0];
-    
-    if ([[NSFileManager defaultManager] fileExistsAtPath:[docsDir stringByAppendingPathComponent:@"tmp.m4a"]])
+    if ([[NSFileManager defaultManager] fileExistsAtPath:[Util audioFilePath]])
     {
-        [[NSFileManager defaultManager]removeItemAtPath:[docsDir stringByAppendingPathComponent:@"tmp.m4a"] error:nil];
+        [[NSFileManager defaultManager]removeItemAtPath:[Util audioFilePath] error:nil];
     }
     
-    NSURL *tmpFileUrl = [NSURL fileURLWithPath:[docsDir stringByAppendingPathComponent:@"tmp.m4a"]];
+    NSURL *tmpFileUrl = [NSURL fileURLWithPath:[Util audioFilePath]];
     NSDictionary *recordSettings = [NSDictionary dictionaryWithObjectsAndKeys:
                                     [NSNumber numberWithInt: kAudioFormatMPEG4AAC], AVFormatIDKey,
                                     [NSNumber numberWithFloat:16000.0], AVSampleRateKey,
@@ -632,15 +674,10 @@ static NSString * const reuseIdentifier = @"Cell";
     [self.audioRecordBtn setImage:[UIImage imageNamed:@"meta_audio_activate.png"] forState:UIControlStateNormal];
     [self.audioRecordBtn setTag:1];
     
-    
-    CGRect frameRect = self.tableRect;
-    frameRect.size.height = frameRect.size.height - self.audioRecordOverLay.frame.size.height;
-    
     self.audioRecordOverLay.hidden = NO;
     
     [UIView beginAnimations:nil context:nil];
     [UIView setAnimationDuration:0.3];
-    self.contentTableView.frame = frameRect;
     self.audioRecordOverLay.alpha = 1.0;
     [UIView commitAnimations];
     
@@ -653,13 +690,10 @@ static NSString * const reuseIdentifier = @"Cell";
 {
     [self.audioRecordBtn setImage:[UIImage imageNamed:@"meta_audio.png"] forState:UIControlStateNormal];
     [self.audioRecordBtn setTag:0];
-    
-    CGRect frameRect = self.tableRect;
     [UIView setAnimationDelegate:self];
     [UIView setAnimationDidStopSelector:@selector(animationEnded)];
     [UIView beginAnimations:nil context:nil];
     [UIView setAnimationDuration:0.3];
-    self.contentTableView.frame = frameRect;
     self.audioRecordOverLay.alpha = 0.0;
     [UIView commitAnimations];
 }
@@ -667,5 +701,43 @@ static NSString * const reuseIdentifier = @"Cell";
 -(void)animationEnded
 {
     self.audioRecordOverLay.hidden = YES;
+}
+
+-(void)rearrangeTabbarButton
+{
+    
+    CGFloat startPoint = 15.0;
+    CGFloat totalFrameWidth = self.view.frame.size.width;
+    CGFloat remainingWidth = totalFrameWidth -(30 * 4) - (startPoint * 2);
+    CGFloat offset = remainingWidth / 3.0;
+
+//    CGFloat fWidth = self.customTabbar.frame;
+    
+
+    CGRect messageBtnFrame =   self.messageButton.frame;
+    CGRect videoRecordBtnFrame =   self.videoRecordBtn.frame;
+    CGRect audioRecordBtnFrame =   self.audioRecordBtn.frame;
+    CGRect photoCaptureBtnFrame =   self.photoCaptureBtn.frame;
+    
+    
+    messageBtnFrame.origin.x = startPoint;
+    photoCaptureBtnFrame.origin.x = startPoint + offset + 30;
+    videoRecordBtnFrame.origin.x = startPoint + offset*2 + 30*2;
+    audioRecordBtnFrame.origin.x = startPoint + offset*3 + 30*3;
+    
+    self.messageButton.frame = messageBtnFrame;
+    self.videoRecordBtn.frame = videoRecordBtnFrame;
+    self.audioRecordBtn.frame = audioRecordBtnFrame;
+    self.photoCaptureBtn.frame = photoCaptureBtnFrame;
+
+    
+    self.messageButton1.frame = messageBtnFrame;
+    self.videoRecordBtn1.frame = videoRecordBtnFrame;
+    self.audioRecordBtn1.frame = audioRecordBtnFrame;
+    self.photoCaptureBtn1.frame = photoCaptureBtnFrame;
+
+    
+    self.customTabbar.hidden = NO;
+    
 }
 @end

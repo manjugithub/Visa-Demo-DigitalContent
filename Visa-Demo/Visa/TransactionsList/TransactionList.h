@@ -22,7 +22,10 @@
     
     IBOutlet UITableView *transactionTableView;
     IBOutlet TransactionListCell *tblCell;
+    
+    
 }
+@property (weak, nonatomic) TransactionListCell *selectCell;
 
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 

@@ -54,6 +54,9 @@
     //[self performSelector:@selector(userSetup) withObject:nil afterDelay:0.3f];
     
     // Do any additional setup after loading the view from its nib.
+    
+    
+
 }
 
 - (void)didReceiveMemoryWarning {
@@ -81,6 +84,27 @@
     [self menuProfileSetup];
     [self numberPadShow];
     numberPadShown = YES;
+    
+    
+    NSString *currency = [FCUserData sharedData].defaultCurrency;
+    if(!currency) {
+        currency = [[FCUserData sharedData].wallets getcurrencyForDefaultWallet];
+        
+    }
+    
+    currencyLabel.text = currency;
+
+
+    
+    
+    UniversalData *uData = [UniversalData sharedUniversalData];
+    [uData PopulateDashBoardBlueCurrency:currency];
+
+    hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    hud.labelText = @"";
+    [FCHTTPClient sharedFCHTTPClient].delegate = self;
+    [[FCHTTPClient sharedFCHTTPClient] getFXRateFrom:currencyLabel.text ToCurrency:currencyToLabel.text];
+    currencyConversionState = @"conversion";
 }
 
 -(void)viewWillDisappear:(BOOL)animated{

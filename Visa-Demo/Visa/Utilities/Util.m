@@ -8,6 +8,7 @@
 
 #import "Util.h"
 #import <UIKit/UIKit.h>
+#import "FCSession.h"
 
 @implementation Util
 
@@ -37,9 +38,9 @@
     } else {
         [dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss.SSZZ"];
         date = [dateFormatter dateFromString:wsDateStr];
-    }	
+    }
     return date;
-}	
+}
 
 
 +(NSDate *)datefromExpiry:(NSString *)expiryDate
@@ -58,7 +59,7 @@
         date = [dateFormatter dateFromString:expiryDate];
     }
     return date;
-
+    
 }
 
 
@@ -143,6 +144,50 @@
 +(void)showNetWorkError{
     UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Network Error" message:@"We are unable to detect any network connection. Please check your wifi/cellular-data" delegate:self cancelButtonTitle:nil otherButtonTitles:@"Ok", nil];
     [alertView show];
+}
+
++(NSString *)audioFilePath
+{
+    NSArray *dirPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsPath = [dirPaths objectAtIndex:0];
+    
+    NSString *docsDir = [documentsPath stringByAppendingPathComponent:[NSString stringWithFormat:@"%@",[FCSession sharedSession].linkID]];
+    
+    if(![[NSFileManager defaultManager] fileExistsAtPath:docsDir])
+    {
+        [[NSFileManager defaultManager] createDirectoryAtPath:docsDir withIntermediateDirectories:NO attributes:nil error:nil];
+    }
+    
+    return [docsDir stringByAppendingPathComponent:@"tmp.m4a"];
+}
+
+
++(NSString *)videoFilePath
+{
+    NSArray *dirPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsPath = [dirPaths objectAtIndex:0];
+    
+    NSString *docsDir = [documentsPath stringByAppendingPathComponent:[FCSession sharedSession].linkID];
+    
+    if(![[NSFileManager defaultManager] fileExistsAtPath:docsDir])
+    {
+        [[NSFileManager defaultManager] createDirectoryAtPath:docsDir withIntermediateDirectories:NO attributes:nil error:nil];
+    }
+    
+    return [docsDir stringByAppendingPathComponent:@"newVideo1.MOV"];
+}
+
+
++(NSString *)imageFilePath
+{
+    NSArray *dirPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsPath = [dirPaths objectAtIndex:0];
+    NSString *docsDir = [documentsPath stringByAppendingPathComponent:[NSString stringWithFormat:@"%@",[FCSession sharedSession].linkID]];
+    if(![[NSFileManager defaultManager] fileExistsAtPath:docsDir])
+    {
+        [[NSFileManager defaultManager] createDirectoryAtPath:docsDir withIntermediateDirectories:NO attributes:nil error:nil];
+    }
+    return [docsDir stringByAppendingPathComponent:@"tmp.png"];
 }
 
 @end

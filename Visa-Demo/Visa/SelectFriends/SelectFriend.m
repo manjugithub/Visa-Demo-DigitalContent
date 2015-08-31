@@ -269,9 +269,12 @@
             [contactList addObject:friend];
             // ONLY PEOPLE HOW HAVE EITHER FIRST OR LAST NAME
             if (friend.firstName == nil && friend.lastName == nil){
-            } else {
+            }
+            else
+            {
                 // CHECK INTO ALPHABETICAL SECTION
-                if (friend.fullName.length > 0){
+                if (friend.fullName.length > 0)
+                {
                     NSString *firstNameFirstChar = [[NSString stringWithFormat: @"%C", [friend.fullName characterAtIndex:0]] uppercaseString];
                 
                     NSInteger i = 0;
@@ -279,7 +282,8 @@
                     for (i = 0 ; i < sectionTitleArray.count ; i++){
                     
                         NSString *alphabet = sectionTitleArray[i];
-                        if ([alphabet isEqualToString:firstNameFirstChar]){
+                        if ([alphabet isEqualToString:firstNameFirstChar])
+                        {
                             [contactDic[alphabet] addObject:friend];
                             gotinSection = YES;
                             break;
@@ -1447,9 +1451,13 @@
     NSString *linkType = [FCSession sharedSession].requestType;
     if(recipientID == nil){
         NSString *fbID = [[FCSession sharedSession].recipient.socials getIDforSocialChannel:@"fb"];
+        if(nil == fbID)
+        {
+            fbID = [[FCSession sharedSession].recipient.socials getIDforSocialChannel:@"fbt"];
+        }
         NSString *whatsappID = [[FCSession sharedSession].recipient.socials getIDforSocialChannel:@"whatsapp"];
-        if(fbID) recipientID =fbID;
-        if(whatsappID) recipientID = whatsappID;
+        if(fbID) recipientID = [NSString stringWithFormat:@"fbt_%@",fbID];
+        if(whatsappID) recipientID = [NSString stringWithFormat:@"whatsapp_%@",whatsappID];
     }
 
     NSString *currency = [FCSession sharedSession].currency;

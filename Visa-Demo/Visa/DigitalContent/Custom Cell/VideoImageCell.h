@@ -11,10 +11,10 @@
 #import "DigitalContentCreationVC.h"
 #import "TGCDownloadProgressIndicator.h"
 #import "AFDownloadRequestOperation.h"
-@interface VideoImageCell : UITableViewCell<FCHTTPClientProgress,TGCDownloadProgressIndicatorCallback>
+@interface VideoImageCell : UITableViewCell<FCHTTPClientProgress,TGCDownloadProgressIndicatorCallback,FCHTTPClientDelegate>
 @property (weak, nonatomic) IBOutlet UIImageView *mediaImageView;
 @property (weak, nonatomic) IBOutlet UIButton *playButton,*closeBtn;
-@property (weak, nonatomic) IBOutlet UIImageView *sideImageView;
+@property (weak, nonatomic) IBOutlet UIImageView *sideImageView,*profileImageView;
 @property (nonatomic, retain) MPMoviePlayerController *movieController;
 @property (nonatomic, weak) id ParentVC;
 @property (nonatomic, weak) NSMutableDictionary *selectedDict;
@@ -40,4 +40,5 @@
 -(void)cancelUploading;
 -(void)setFinalDatasource:(NSMutableDictionary *)inDataDict;
 -(void)downloadMedia:(NSMutableDictionary *)inDataDict;
+-(void)getVideoLink:(NSMutableDictionary *)inDataDict;
 @end

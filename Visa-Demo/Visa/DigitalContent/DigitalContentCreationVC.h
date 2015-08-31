@@ -12,7 +12,7 @@
 #import <MobileCoreServices/MobileCoreServices.h>
 #import <MediaPlayer/MediaPlayer.h>
 #import "MoneyInput.h"
-@interface DigitalContentCreationVC : UIViewController<UITableViewDataSource,UITableViewDelegate,UITextViewDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,UIActionSheetDelegate,FCHTTPClientProgress>
+@interface DigitalContentCreationVC : UIViewController<UITableViewDataSource,UITableViewDelegate,UITextViewDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,UIActionSheetDelegate,FCHTTPClientProgress,FCHTTPClientDelegate>
 {
     CGFloat _currentKeyboardHeight;
     AVAudioRecorder *recorder;

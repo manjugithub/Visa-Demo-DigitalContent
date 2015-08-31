@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		186FBA8E1B617BD60021E8A9 /* TGCDownloadProgressIndicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 186FBA8C1B617BD60021E8A9 /* TGCDownloadProgressIndicator.m */; };
-		186FBA8F1B617BD60021E8A9 /* TGCDownloadProgressIndicator.xib in Resources */ = {isa = PBXBuildFile; fileRef = 186FBA8D1B617BD60021E8A9 /* TGCDownloadProgressIndicator.xib */; };
 		4D1A4313D8D5FAD820353916 /* libPods-Fastacash.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FEB958F65D9C2D227FAE6468 /* libPods-Fastacash.a */; };
 		5DB7017D19ED5DB8006F5408 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DB7017C19ED5DB8006F5408 /* AddressBook.framework */; };
 		5DB7018219ED6B47006F5408 /* AddressBookUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DB7018119ED6B47006F5408 /* AddressBookUI.framework */; };
@@ -414,14 +412,24 @@
 		B0F425091A07784400183D52 /* TransactionPendingListCell_iPhone6.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0F425071A07784400183D52 /* TransactionPendingListCell_iPhone6.xib */; };
 		B0F4250A1A07784400183D52 /* TransactionPendingListCell_iPhone6Plus.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0F425081A07784400183D52 /* TransactionPendingListCell_iPhone6Plus.xib */; };
 		B6198D561B4BB1DF0035FA42 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6198D551B4BB1DF0035FA42 /* MediaPlayer.framework */; };
-		B651CBBB1B71100D009C46AC /* AFDownloadRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = B651CBBA1B71100D009C46AC /* AFDownloadRequestOperation.m */; };
-		B67679011B4E48BF0010F1FC /* AudioPlaybackCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B67679001B4E48BF0010F1FC /* AudioPlaybackCell.m */; };
+		B679E1EB1B94EDED004ACC16 /* ConversionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B679E1DE1B94EDED004ACC16 /* ConversionCell.m */; };
+		B679E1EC1B94EDED004ACC16 /* CreditedCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B679E1E01B94EDED004ACC16 /* CreditedCell.m */; };
+		B679E1ED1B94EDED004ACC16 /* CurrencyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B679E1E21B94EDED004ACC16 /* CurrencyCell.m */; };
+		B679E1EE1B94EDED004ACC16 /* FastaLinkCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B679E1E41B94EDED004ACC16 /* FastaLinkCell.m */; };
+		B679E1EF1B94EDED004ACC16 /* ProfileCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B679E1E61B94EDED004ACC16 /* ProfileCell.m */; };
+		B679E1F01B94EDED004ACC16 /* SplitCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B679E1E81B94EDED004ACC16 /* SplitCell.m */; };
+		B679E1F11B94EDED004ACC16 /* VisaCardCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B679E1EA1B94EDED004ACC16 /* VisaCardCell.m */; };
+		B679E2051B94EE27004ACC16 /* AFDownloadRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = B679E1F41B94EE27004ACC16 /* AFDownloadRequestOperation.m */; };
+		B679E2061B94EE27004ACC16 /* AudioPlaybackCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B679E1F71B94EE27004ACC16 /* AudioPlaybackCell.m */; };
+		B679E2071B94EE27004ACC16 /* MessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B679E1F91B94EE27004ACC16 /* MessageCell.m */; };
+		B679E2081B94EE27004ACC16 /* VideoImageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B679E1FB1B94EE27004ACC16 /* VideoImageCell.m */; };
+		B679E2091B94EE27004ACC16 /* DigitalContentCreationVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B679E1FD1B94EE27004ACC16 /* DigitalContentCreationVC.m */; };
+		B679E20A1B94EE27004ACC16 /* TGCDownloadProgressIndicator.m in Sources */ = {isa = PBXBuildFile; fileRef = B679E2001B94EE27004ACC16 /* TGCDownloadProgressIndicator.m */; };
+		B679E20B1B94EE27004ACC16 /* TGCDownloadProgressIndicator.xib in Resources */ = {isa = PBXBuildFile; fileRef = B679E2011B94EE27004ACC16 /* TGCDownloadProgressIndicator.xib */; };
+		B679E20C1B94EE27004ACC16 /* video.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = B679E2021B94EE27004ACC16 /* video.mp4 */; };
+		B679E20D1B94EE27004ACC16 /* VideoPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = B679E2041B94EE27004ACC16 /* VideoPlayer.m */; };
 		B69527531B4A4D4E0031B40E /* DigitalContent.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B69527521B4A4D4E0031B40E /* DigitalContent.storyboard */; };
-		B69527561B4A51050031B40E /* DigitalContentCreationVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B69527551B4A51050031B40E /* DigitalContentCreationVC.m */; };
 		B6B7F2601B58E68200C3961D /* testing.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B6B7F25F1B58E68200C3961D /* testing.jpg */; };
-		B6E2C8561B4D783A002FBCC8 /* VideoImageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B6E2C8551B4D783A002FBCC8 /* VideoImageCell.m */; };
-		B6E2C85A1B4DBDAD002FBCC8 /* VideoPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = B6E2C8591B4DBDAD002FBCC8 /* VideoPlayer.m */; };
-		B6E2C85E1B4DC7F0002FBCC8 /* MessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B6E2C85D1B4DC7F0002FBCC8 /* MessageCell.m */; };
 		F204F48E19FA5D93006B0337 /* FCCard.m in Sources */ = {isa = PBXBuildFile; fileRef = F204F48719FA5D93006B0337 /* FCCard.m */; };
 		F204F48F19FA5D93006B0337 /* FCSocial.m in Sources */ = {isa = PBXBuildFile; fileRef = F204F48919FA5D93006B0337 /* FCSocial.m */; };
 		F204F49019FA5D93006B0337 /* FCSocials.m in Sources */ = {isa = PBXBuildFile; fileRef = F204F48B19FA5D93006B0337 /* FCSocials.m */; };
@@ -482,9 +490,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		186FBA8B1B617BD60021E8A9 /* TGCDownloadProgressIndicator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TGCDownloadProgressIndicator.h; path = DownloadIndicator/TGCDownloadProgressIndicator.h; sourceTree = "<group>"; };
-		186FBA8C1B617BD60021E8A9 /* TGCDownloadProgressIndicator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TGCDownloadProgressIndicator.m; path = DownloadIndicator/TGCDownloadProgressIndicator.m; sourceTree = "<group>"; };
-		186FBA8D1B617BD60021E8A9 /* TGCDownloadProgressIndicator.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TGCDownloadProgressIndicator.xib; path = DownloadIndicator/TGCDownloadProgressIndicator.xib; sourceTree = "<group>"; };
 		5DB7017C19ED5DB8006F5408 /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
 		5DB7018119ED6B47006F5408 /* AddressBookUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBookUI.framework; path = System/Library/Frameworks/AddressBookUI.framework; sourceTree = SDKROOT; };
 		5DB701A919EE213C006F5408 /* LocalAuthentication.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LocalAuthentication.framework; path = System/Library/Frameworks/LocalAuthentication.framework; sourceTree = SDKROOT; };
@@ -959,20 +964,38 @@
 		B0F425081A07784400183D52 /* TransactionPendingListCell_iPhone6Plus.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TransactionPendingListCell_iPhone6Plus.xib; sourceTree = "<group>"; };
 		B33773100F98E7AF3594D912 /* Pods-Fastacash.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fastacash.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Fastacash/Pods-Fastacash.debug.xcconfig"; sourceTree = "<group>"; };
 		B6198D551B4BB1DF0035FA42 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
-		B651CBB91B71100D009C46AC /* AFDownloadRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFDownloadRequestOperation.h; sourceTree = "<group>"; };
-		B651CBBA1B71100D009C46AC /* AFDownloadRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFDownloadRequestOperation.m; sourceTree = "<group>"; };
-		B67678FF1B4E48BF0010F1FC /* AudioPlaybackCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioPlaybackCell.h; sourceTree = "<group>"; };
-		B67679001B4E48BF0010F1FC /* AudioPlaybackCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AudioPlaybackCell.m; sourceTree = "<group>"; };
+		B679E1DD1B94EDED004ACC16 /* ConversionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConversionCell.h; sourceTree = "<group>"; };
+		B679E1DE1B94EDED004ACC16 /* ConversionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConversionCell.m; sourceTree = "<group>"; };
+		B679E1DF1B94EDED004ACC16 /* CreditedCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreditedCell.h; sourceTree = "<group>"; };
+		B679E1E01B94EDED004ACC16 /* CreditedCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreditedCell.m; sourceTree = "<group>"; };
+		B679E1E11B94EDED004ACC16 /* CurrencyCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CurrencyCell.h; sourceTree = "<group>"; };
+		B679E1E21B94EDED004ACC16 /* CurrencyCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CurrencyCell.m; sourceTree = "<group>"; };
+		B679E1E31B94EDED004ACC16 /* FastaLinkCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FastaLinkCell.h; sourceTree = "<group>"; };
+		B679E1E41B94EDED004ACC16 /* FastaLinkCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FastaLinkCell.m; sourceTree = "<group>"; };
+		B679E1E51B94EDED004ACC16 /* ProfileCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileCell.h; sourceTree = "<group>"; };
+		B679E1E61B94EDED004ACC16 /* ProfileCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileCell.m; sourceTree = "<group>"; };
+		B679E1E71B94EDED004ACC16 /* SplitCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SplitCell.h; sourceTree = "<group>"; };
+		B679E1E81B94EDED004ACC16 /* SplitCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SplitCell.m; sourceTree = "<group>"; };
+		B679E1E91B94EDED004ACC16 /* VisaCardCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VisaCardCell.h; sourceTree = "<group>"; };
+		B679E1EA1B94EDED004ACC16 /* VisaCardCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VisaCardCell.m; sourceTree = "<group>"; };
+		B679E1F31B94EE27004ACC16 /* AFDownloadRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFDownloadRequestOperation.h; sourceTree = "<group>"; };
+		B679E1F41B94EE27004ACC16 /* AFDownloadRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFDownloadRequestOperation.m; sourceTree = "<group>"; };
+		B679E1F61B94EE27004ACC16 /* AudioPlaybackCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioPlaybackCell.h; sourceTree = "<group>"; };
+		B679E1F71B94EE27004ACC16 /* AudioPlaybackCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AudioPlaybackCell.m; sourceTree = "<group>"; };
+		B679E1F81B94EE27004ACC16 /* MessageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageCell.h; sourceTree = "<group>"; };
+		B679E1F91B94EE27004ACC16 /* MessageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageCell.m; sourceTree = "<group>"; };
+		B679E1FA1B94EE27004ACC16 /* VideoImageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoImageCell.h; sourceTree = "<group>"; };
+		B679E1FB1B94EE27004ACC16 /* VideoImageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoImageCell.m; sourceTree = "<group>"; };
+		B679E1FC1B94EE27004ACC16 /* DigitalContentCreationVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DigitalContentCreationVC.h; sourceTree = "<group>"; };
+		B679E1FD1B94EE27004ACC16 /* DigitalContentCreationVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DigitalContentCreationVC.m; sourceTree = "<group>"; };
+		B679E1FF1B94EE27004ACC16 /* TGCDownloadProgressIndicator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TGCDownloadProgressIndicator.h; sourceTree = "<group>"; };
+		B679E2001B94EE27004ACC16 /* TGCDownloadProgressIndicator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TGCDownloadProgressIndicator.m; sourceTree = "<group>"; };
+		B679E2011B94EE27004ACC16 /* TGCDownloadProgressIndicator.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TGCDownloadProgressIndicator.xib; sourceTree = "<group>"; };
+		B679E2021B94EE27004ACC16 /* video.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = video.mp4; sourceTree = "<group>"; };
+		B679E2031B94EE27004ACC16 /* VideoPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoPlayer.h; sourceTree = "<group>"; };
+		B679E2041B94EE27004ACC16 /* VideoPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoPlayer.m; sourceTree = "<group>"; };
 		B69527521B4A4D4E0031B40E /* DigitalContent.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = DigitalContent.storyboard; sourceTree = "<group>"; };
-		B69527541B4A51050031B40E /* DigitalContentCreationVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DigitalContentCreationVC.h; sourceTree = "<group>"; };
-		B69527551B4A51050031B40E /* DigitalContentCreationVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DigitalContentCreationVC.m; sourceTree = "<group>"; };
 		B6B7F25F1B58E68200C3961D /* testing.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = testing.jpg; sourceTree = "<group>"; };
-		B6E2C8541B4D783A002FBCC8 /* VideoImageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoImageCell.h; sourceTree = "<group>"; };
-		B6E2C8551B4D783A002FBCC8 /* VideoImageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoImageCell.m; sourceTree = "<group>"; };
-		B6E2C8581B4DBDAD002FBCC8 /* VideoPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoPlayer.h; sourceTree = "<group>"; };
-		B6E2C8591B4DBDAD002FBCC8 /* VideoPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoPlayer.m; sourceTree = "<group>"; };
-		B6E2C85C1B4DC7F0002FBCC8 /* MessageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageCell.h; sourceTree = "<group>"; };
-		B6E2C85D1B4DC7F0002FBCC8 /* MessageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageCell.m; sourceTree = "<group>"; };
 		C293A45EA344CB77A8E670FA /* Pods-Fastacash.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fastacash.release.xcconfig"; path = "Pods/Target Support Files/Pods-Fastacash/Pods-Fastacash.release.xcconfig"; sourceTree = "<group>"; };
 		F204F48619FA5D93006B0337 /* FCCard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FCCard.h; sourceTree = "<group>"; };
 		F204F48719FA5D93006B0337 /* FCCard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FCCard.m; sourceTree = "<group>"; };
@@ -1800,34 +1823,64 @@
 			path = XMLReader;
 			sourceTree = "<group>";
 		};
-		B69527511B4A4D280031B40E /* DigitalContent */ = {
+		B679E1DC1B94EDED004ACC16 /* TransactionSuccessCell */ = {
 			isa = PBXGroup;
 			children = (
-				B651CBB91B71100D009C46AC /* AFDownloadRequestOperation.h */,
-				B651CBBA1B71100D009C46AC /* AFDownloadRequestOperation.m */,
-				186FBA8B1B617BD60021E8A9 /* TGCDownloadProgressIndicator.h */,
-				186FBA8C1B617BD60021E8A9 /* TGCDownloadProgressIndicator.m */,
-				186FBA8D1B617BD60021E8A9 /* TGCDownloadProgressIndicator.xib */,
-				B6E2C8531B4D780C002FBCC8 /* Custom Cell */,
-				B69527541B4A51050031B40E /* DigitalContentCreationVC.h */,
-				B69527551B4A51050031B40E /* DigitalContentCreationVC.m */,
-				B6E2C8581B4DBDAD002FBCC8 /* VideoPlayer.h */,
-				B6E2C8591B4DBDAD002FBCC8 /* VideoPlayer.m */,
+				B679E1DD1B94EDED004ACC16 /* ConversionCell.h */,
+				B679E1DE1B94EDED004ACC16 /* ConversionCell.m */,
+				B679E1DF1B94EDED004ACC16 /* CreditedCell.h */,
+				B679E1E01B94EDED004ACC16 /* CreditedCell.m */,
+				B679E1E11B94EDED004ACC16 /* CurrencyCell.h */,
+				B679E1E21B94EDED004ACC16 /* CurrencyCell.m */,
+				B679E1E31B94EDED004ACC16 /* FastaLinkCell.h */,
+				B679E1E41B94EDED004ACC16 /* FastaLinkCell.m */,
+				B679E1E51B94EDED004ACC16 /* ProfileCell.h */,
+				B679E1E61B94EDED004ACC16 /* ProfileCell.m */,
+				B679E1E71B94EDED004ACC16 /* SplitCell.h */,
+				B679E1E81B94EDED004ACC16 /* SplitCell.m */,
+				B679E1E91B94EDED004ACC16 /* VisaCardCell.h */,
+				B679E1EA1B94EDED004ACC16 /* VisaCardCell.m */,
+			);
+			path = TransactionSuccessCell;
+			sourceTree = "<group>";
+		};
+		B679E1F21B94EE27004ACC16 /* DigitalContent */ = {
+			isa = PBXGroup;
+			children = (
+				B679E1F31B94EE27004ACC16 /* AFDownloadRequestOperation.h */,
+				B679E1F41B94EE27004ACC16 /* AFDownloadRequestOperation.m */,
+				B679E1F51B94EE27004ACC16 /* Custom Cell */,
+				B679E1FC1B94EE27004ACC16 /* DigitalContentCreationVC.h */,
+				B679E1FD1B94EE27004ACC16 /* DigitalContentCreationVC.m */,
+				B679E1FE1B94EE27004ACC16 /* DownloadIndicator */,
+				B679E2021B94EE27004ACC16 /* video.mp4 */,
+				B679E2031B94EE27004ACC16 /* VideoPlayer.h */,
+				B679E2041B94EE27004ACC16 /* VideoPlayer.m */,
 			);
 			path = DigitalContent;
 			sourceTree = "<group>";
 		};
-		B6E2C8531B4D780C002FBCC8 /* Custom Cell */ = {
+		B679E1F51B94EE27004ACC16 /* Custom Cell */ = {
 			isa = PBXGroup;
 			children = (
-				B6E2C8541B4D783A002FBCC8 /* VideoImageCell.h */,
-				B6E2C8551B4D783A002FBCC8 /* VideoImageCell.m */,
-				B6E2C85C1B4DC7F0002FBCC8 /* MessageCell.h */,
-				B6E2C85D1B4DC7F0002FBCC8 /* MessageCell.m */,
-				B67678FF1B4E48BF0010F1FC /* AudioPlaybackCell.h */,
-				B67679001B4E48BF0010F1FC /* AudioPlaybackCell.m */,
+				B679E1F61B94EE27004ACC16 /* AudioPlaybackCell.h */,
+				B679E1F71B94EE27004ACC16 /* AudioPlaybackCell.m */,
+				B679E1F81B94EE27004ACC16 /* MessageCell.h */,
+				B679E1F91B94EE27004ACC16 /* MessageCell.m */,
+				B679E1FA1B94EE27004ACC16 /* VideoImageCell.h */,
+				B679E1FB1B94EE27004ACC16 /* VideoImageCell.m */,
 			);
 			path = "Custom Cell";
+			sourceTree = "<group>";
+		};
+		B679E1FE1B94EE27004ACC16 /* DownloadIndicator */ = {
+			isa = PBXGroup;
+			children = (
+				B679E1FF1B94EE27004ACC16 /* TGCDownloadProgressIndicator.h */,
+				B679E2001B94EE27004ACC16 /* TGCDownloadProgressIndicator.m */,
+				B679E2011B94EE27004ACC16 /* TGCDownloadProgressIndicator.xib */,
+			);
+			path = DownloadIndicator;
 			sourceTree = "<group>";
 		};
 		D4C680C6332B408636ACF324 /* Frameworks */ = {
@@ -1902,7 +1955,8 @@
 		F2397AA219F3717700232104 /* Visa */ = {
 			isa = PBXGroup;
 			children = (
-				B69527511B4A4D280031B40E /* DigitalContent */,
+				B679E1F21B94EE27004ACC16 /* DigitalContent */,
+				B679E1DC1B94EDED004ACC16 /* TransactionSuccessCell */,
 				B063FE441A07801B00D1A5B7 /* TransactionDetails */,
 				65B896C11A00C66E00E32B89 /* Utilities */,
 				B0951B1819FF43B200F6DD02 /* Splash */,
@@ -2382,7 +2436,7 @@
 				B040DFC619F8FC6100E4E044 /* MK.png in Resources */,
 				F22ACF4119F2E0E100BA6A03 /* LaunchScreen.xib in Resources */,
 				B040DF3A19F8FC6100E4E044 /* AL.png in Resources */,
-				186FBA8F1B617BD60021E8A9 /* TGCDownloadProgressIndicator.xib in Resources */,
+				B679E20B1B94EE27004ACC16 /* TGCDownloadProgressIndicator.xib in Resources */,
 				B040E02619F8FC6100E4E044 /* VI.png in Resources */,
 				B040DF4119F8FC6100E4E044 /* AT.png in Resources */,
 				B040DFFF19F8FC6100E4E044 /* SJ.png in Resources */,
@@ -2512,6 +2566,7 @@
 				B040DFF919F8FC6100E4E044 /* SC.png in Resources */,
 				B040DF8A19F8FC6100E4E044 /* GL.png in Resources */,
 				B040DF3C19F8FC6100E4E044 /* AN.png in Resources */,
+				B679E20C1B94EE27004ACC16 /* video.mp4 in Resources */,
 				B040DF5019F8FC6100E4E044 /* BM.png in Resources */,
 				B040DF5B19F8FC6100E4E044 /* CA.png in Resources */,
 				B0951B0719FF430900F6DD02 /* splash_21.png in Resources */,
@@ -2591,9 +2646,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				B09AA5DE1A0739CF00C7BBA3 /* TransactionPendingListCell.m in Sources */,
+				B679E1EB1B94EDED004ACC16 /* ConversionCell.m in Sources */,
 				B0515B9A19FD027000D514D0 /* ASIProgressDelegate.h in Sources */,
 				B040DE2919F8FBFE00E4E044 /* PhoneLocationHelper.m in Sources */,
 				F2397B2A19F3717700232104 /* QRCodeMenu.m in Sources */,
+				B679E2081B94EE27004ACC16 /* VideoImageCell.m in Sources */,
+				B679E1ED1B94EDED004ACC16 /* CurrencyCell.m in Sources */,
+				B679E2051B94EE27004ACC16 /* AFDownloadRequestOperation.m in Sources */,
 				F2397B1419F3717700232104 /* Asking.m in Sources */,
 				B0D8C6B319F601C800699392 /* JSONKit.m in Sources */,
 				65B896C41A00C67A00E32B89 /* Util.m in Sources */,
@@ -2604,9 +2663,9 @@
 				B08547671A0D1DE300C69118 /* SocialSetupMain.m in Sources */,
 				B040DE2819F8FBFE00E4E044 /* LocationHelper.m in Sources */,
 				F283A9CE19F62ECD00C620B6 /* NSString+WhatsAppKit.m in Sources */,
+				B679E2061B94EE27004ACC16 /* AudioPlaybackCell.m in Sources */,
+				B679E1F01B94EDED004ACC16 /* SplitCell.m in Sources */,
 				B0515B9519FCF97A00D514D0 /* YFTwoValueObject.m in Sources */,
-				B67679011B4E48BF0010F1FC /* AudioPlaybackCell.m in Sources */,
-				B6E2C85E1B4DC7F0002FBCC8 /* MessageCell.m in Sources */,
 				F2397B2819F3717700232104 /* GenerateQR.m in Sources */,
 				F2397B1719F3717700232104 /* Friend.m in Sources */,
 				B04BC00019FCF4140007E8FA /* ASIHTTPRequest.m in Sources */,
@@ -2614,11 +2673,12 @@
 				B0283AC219F93BDB0061CA06 /* MerchantPaymentReceipt.m in Sources */,
 				65CD199619F73EA700C86858 /* FCAccount.m in Sources */,
 				6578076319F6619A009CB786 /* FCUserData.m in Sources */,
-				B651CBBB1B71100D009C46AC /* AFDownloadRequestOperation.m in Sources */,
 				F2397B1C19F3717700232104 /* FriendsContactList.m in Sources */,
+				B679E1EF1B94EDED004ACC16 /* ProfileCell.m in Sources */,
 				B0D8C6B419F601C800699392 /* Reachability.m in Sources */,
 				F2397B2419F3717700232104 /* MoneyInput.m in Sources */,
 				F204F48E19FA5D93006B0337 /* FCCard.m in Sources */,
+				B679E1F11B94EDED004ACC16 /* VisaCardCell.m in Sources */,
 				F2397B1E19F3717700232104 /* FriendsListMain.m in Sources */,
 				F2397B0619F3717700232104 /* AcceptMoney.m in Sources */,
 				B0D8C6A219F601BA00699392 /* FCHTTPClient.m in Sources */,
@@ -2628,7 +2688,6 @@
 				F2397B1019F3717700232104 /* AddCardExpiryDatePicker.m in Sources */,
 				F2397B2619F3717700232104 /* ProfileSetup.m in Sources */,
 				F2397B0819F3717700232104 /* AcceptMoneyChangeCard.m in Sources */,
-				186FBA8E1B617BD60021E8A9 /* TGCDownloadProgressIndicator.m in Sources */,
 				B08FCD8019F49AE2007EFE76 /* CardExisting.m in Sources */,
 				B04BBFFD19FCF4140007E8FA /* ASIDataDecompressor.m in Sources */,
 				F2397B3019F3717700232104 /* Sent.m in Sources */,
@@ -2636,28 +2695,30 @@
 				F2426F401A0A19780092DB16 /* AppSettings.m in Sources */,
 				B0D8C6A319F601BA00699392 /* NSMutableURLRequest+BasicAuth.m in Sources */,
 				F22ACF4419F2E0E100BA6A03 /* main.m in Sources */,
+				B679E20D1B94EE27004ACC16 /* VideoPlayer.m in Sources */,
 				F2397B0E19F3717700232104 /* AddCardCam.m in Sources */,
 				B04BBFFF19FCF4140007E8FA /* ASIFormDataRequest.m in Sources */,
-				B6E2C85A1B4DBDAD002FBCC8 /* VideoPlayer.m in Sources */,
 				F22ACF4719F2E0E100BA6A03 /* ViewController.m in Sources */,
 				F204F49019FA5D93006B0337 /* FCSocials.m in Sources */,
 				B08FCD8519F4A033007EFE76 /* AddRemoveSelectExistingCard.m in Sources */,
 				B04B1E711A0B1432007CF20E /* SelectFriendMain.m in Sources */,
 				F204F48F19FA5D93006B0337 /* FCSocial.m in Sources */,
 				F2397B0A19F3717700232104 /* AcceptMoneySplited.m in Sources */,
+				B679E2071B94EE27004ACC16 /* MessageCell.m in Sources */,
+				B679E20A1B94EE27004ACC16 /* TGCDownloadProgressIndicator.m in Sources */,
 				B040DE2D19F8FC1D00E4E044 /* DT_TouchIDManager.m in Sources */,
 				65CD199919F7425300C86858 /* FCLink.m in Sources */,
 				B04BBFFC19FCF4140007E8FA /* ASIDataCompressor.m in Sources */,
 				65EFCD641A022DFF00491390 /* FCFriendCell.m in Sources */,
 				B040DF3219F8FC6100E4E044 /* CustomPickerView.m in Sources */,
+				B679E1EC1B94EDED004ACC16 /* CreditedCell.m in Sources */,
 				F22ACF4019F2E0E100BA6A03 /* AppDelegate.m in Sources */,
-				B69527561B4A51050031B40E /* DigitalContentCreationVC.m in Sources */,
 				6578076819F661F6009CB786 /* SocialWebLogin.m in Sources */,
 				B04BC00219FCF4140007E8FA /* ASINetworkQueue.m in Sources */,
 				F2397B1819F3717700232104 /* FriendListFavorite.m in Sources */,
 				B088E84519F8BA67006E4DCE /* TransactionListCell.m in Sources */,
-				B6E2C8561B4D783A002FBCC8 /* VideoImageCell.m in Sources */,
 				65920C3219F7D9BA005563D8 /* SelectFriend.m in Sources */,
+				B679E1EE1B94EDED004ACC16 /* FastaLinkCell.m in Sources */,
 				B063FE471A07805100D1A5B7 /* TransactionDetail.m in Sources */,
 				B040DE2219F8F23900E4E044 /* AskingChangeCard.m in Sources */,
 				F2397B3219F3717700232104 /* SocialSetup.m in Sources */,
@@ -2673,6 +2734,7 @@
 				B04BBFFB19FCF4140007E8FA /* ASIAuthenticationDialog.m in Sources */,
 				B0515B9719FCF97A00D514D0 /* YFCurrencyConversion.m in Sources */,
 				F2397B2E19F3717700232104 /* ScanQR.m in Sources */,
+				B679E2091B94EE27004ACC16 /* DigitalContentCreationVC.m in Sources */,
 				F2397B2219F3717700232104 /* MerchantPaymentPaid.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

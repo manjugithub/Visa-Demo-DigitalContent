@@ -1,3 +1,4 @@
+
 //
 //  Util.h
 //  Visa-Demo
@@ -20,4 +21,9 @@
 +(void)scheduleNotificationWithIntervalWithAlertMessage:(NSString *)alertMessage withAlertAction:(NSString *)aButton withTimeInternal:(NSInteger)intervalTime;
 +(void)scheduleNotificationWithInterval:(NSString *)interval withAlertMessage:(NSString *)alertMessage withAlertAction:(NSString *)aButton withCount:(NSString *)countValue;
 +(void)showNetWorkError;
+
+
++(NSString *)audioFilePath;
++(NSString *)videoFilePath;
++(NSString *)imageFilePath;
 @end

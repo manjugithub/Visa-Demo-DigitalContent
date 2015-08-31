@@ -180,6 +180,9 @@ static CGFloat const kBounceValue = 20.0f;
 - (void)setConstraintsToShowAllButtons:(BOOL)animated notifyDelegateDidOpen:(BOOL)notifyDelegate {
     //TODO: Notify delegate.
     
+    
+    [self.delegate setSelectedCell:self];
+
     //1
     if (self.startingRightLayoutConstraintConstant == [self buttonTotalWidth] &&
         self.contentViewRightConstraint.constant == [self buttonTotalWidth]) {

@@ -545,7 +545,7 @@
         params[@"amount"]=spendViaAmountLabel.text;
         params[@"currency"]= [FCSession sharedSession].recipientCurrency;
         NSString *wallet_id = [[FCUserData sharedData].wallets getSenderWalletByAccountNumber:[AppSettings get:@"QR_WALLET_ACCOUNT_NUMBER"]];
-        params[@"sender_wallet"]=wallet_id;
+        params[@"sender_wallet"]=wallet_id == nil ? @"5addf8b7-53f1-46f7-bbcb-92216f05e7d9" : wallet_id;
         params[@"recipient"]=[NSString stringWithFormat:@"fc_%@",[AppSettings get:@"MERCHANT_FCUID"]];
         params[@"type"]=@"sendExternal";
         params[@"spend_type"]=@"qr";
