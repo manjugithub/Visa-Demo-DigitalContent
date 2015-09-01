@@ -42,7 +42,7 @@
         // For Iphone 6 Plus
         finalStoryBoardName = [NSString stringWithFormat:@"%@_iPhone6Plus", storyBoardName];
     }
-
+    
     return finalStoryBoardName;
 }
 
@@ -56,17 +56,17 @@
 -(void)navMoneyInputPlace{
     
     /*
-    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"AskSendMoney" bundle:nil];
-    
-    
-    NSString *viewID;
-    if (viewSize.width == 320){
-        viewID = @"MoneyInput";
-    } else if (viewSize.width == 375){
-        viewID = @"MoneyInput6";
-    } else if (viewSize.width == 414){
-        viewID = @"MoneyInput6Plus";
-    }
+     UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"AskSendMoney" bundle:nil];
+     
+     
+     NSString *viewID;
+     if (viewSize.width == 320){
+     viewID = @"MoneyInput";
+     } else if (viewSize.width == 375){
+     viewID = @"MoneyInput6";
+     } else if (viewSize.width == 414){
+     viewID = @"MoneyInput6Plus";
+     }
      */
     
     UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:[self navGetStoryBoardVersionedName:@"AskSendMoney" ] bundle:nil];
@@ -101,7 +101,7 @@
     NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
     [userDefault setObject:@"false" forKey:@"isTouchRequired"];
     [userDefault synchronize];
-
+    
     if (moneyInput == nil){
         [self navMoneyInputGo];
         return;
@@ -196,7 +196,7 @@
 {
     UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"DigitalContent" bundle:nil];
     DigitalContentCreationVC *digitalVC = [mainStoryboard instantiateViewControllerWithIdentifier:@"DigitalContentCreationVC"];
-//    [socialSetup assignParent:self];
+    //    [socialSetup assignParent:self];
     [self.navigationController pushViewController:digitalVC animated:YES];
 }
 
@@ -222,46 +222,46 @@
 }
 
 /*
--(void)navPlaceScanQRCode{
-    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:[self navGetStoryBoardVersionedName:@"QRCode"] bundle:nil];
-    scanQR = [mainStoryboard instantiateViewControllerWithIdentifier:@"ScanQR"];
-    [scanQR assignParent:self];
-    
-}
-
--(void)navScanQRGo{
-    
-    [self navPlaceScanQRCode];
-    nextViewController = scanQR;
-    [self.navigationController pushViewController:scanQR animated:YES];
-    
-}
-
--(void)navScanQRBack{
-    nextViewController = scanQR;
-    [self.navigationController popToViewController:scanQR animated:YES];
-}
-*/
+ -(void)navPlaceScanQRCode{
+ UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:[self navGetStoryBoardVersionedName:@"QRCode"] bundle:nil];
+ scanQR = [mainStoryboard instantiateViewControllerWithIdentifier:@"ScanQR"];
+ [scanQR assignParent:self];
+ 
+ }
+ 
+ -(void)navScanQRGo{
+ 
+ [self navPlaceScanQRCode];
+ nextViewController = scanQR;
+ [self.navigationController pushViewController:scanQR animated:YES];
+ 
+ }
+ 
+ -(void)navScanQRBack{
+ nextViewController = scanQR;
+ [self.navigationController popToViewController:scanQR animated:YES];
+ }
+ */
 
 /*
--(void)navPlaceGenerateQRCode{
-    
-    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:[self navGetStoryBoardVersionedName:@"QRCode"] bundle:nil];
-    generateQR = [mainStoryboard instantiateViewControllerWithIdentifier:@"GenerateQR"];
-    [generateQR assignParent:self];
-    
-}
-
--(void)navGenerateQRCodeGo{
-    
-    [self navPlaceGenerateQRCode];
-    nextViewController = generateQR;
-    [self.navigationController pushViewController:generateQR animated:YES];
-    
-}
-
-
-*/
+ -(void)navPlaceGenerateQRCode{
+ 
+ UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:[self navGetStoryBoardVersionedName:@"QRCode"] bundle:nil];
+ generateQR = [mainStoryboard instantiateViewControllerWithIdentifier:@"GenerateQR"];
+ [generateQR assignParent:self];
+ 
+ }
+ 
+ -(void)navGenerateQRCodeGo{
+ 
+ [self navPlaceGenerateQRCode];
+ nextViewController = generateQR;
+ [self.navigationController pushViewController:generateQR animated:YES];
+ 
+ }
+ 
+ 
+ */
 
 
 -(void)navPlaceQRGeneratedCode{
@@ -512,7 +512,7 @@
 
 -(void)navTransactionDetailPlace{
     
-    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:[self navGetStoryBoardVersionedName:@"TransactionHistory"] bundle:nil];
+    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"TransactionHistory" bundle:nil];
     transactionDetail = [mainStoryboard instantiateViewControllerWithIdentifier:@"TransactionDetail"];
     [transactionDetail assignParent:self];
 }
@@ -586,7 +586,7 @@
 
 
 -(void)navAskingMoneyGo:(NSString *)linkID backToTransactionList:(BOOL)toBack{
-
+    
     [self askingMoneyPlace:toBack];
     [asking setupLink:linkID];
     nextViewController = asking;
@@ -608,12 +608,12 @@
     nextViewController = selectFriendMain;
     [self.navigationController pushViewController:selectFriendMain animated:YES];
     /*
-    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:[self navGetStoryBoardVersionedName:@"AskSendMoney"] bundle:nil];
-    selectFriend = [mainStoryboard instantiateViewControllerWithIdentifier:@"FriendsList"];
-    selectFriend.isfromFB = NO;
-    [selectFriend assignParent:self];
-    nextViewController = selectFriend;
-    [self.navigationController pushViewController:selectFriend animated:YES];
+     UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:[self navGetStoryBoardVersionedName:@"AskSendMoney"] bundle:nil];
+     selectFriend = [mainStoryboard instantiateViewControllerWithIdentifier:@"FriendsList"];
+     selectFriend.isfromFB = NO;
+     [selectFriend assignParent:self];
+     nextViewController = selectFriend;
+     [self.navigationController pushViewController:selectFriend animated:YES];
      */
 }
 
@@ -629,12 +629,12 @@
     [self.navigationController pushViewController:selectFriendMain animated:YES];
     
     /*
-    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:[self navGetStoryBoardVersionedName:@"AskSendMoney"] bundle:nil];
-    selectFriend = [mainStoryboard instantiateViewControllerWithIdentifier:@"FriendsList"];
-    selectFriend.isfromFB = YES;
-    [selectFriend assignParent:self];
-    nextViewController = selectFriend;
-    [self.navigationController pushViewController:selectFriend animated:YES];
+     UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:[self navGetStoryBoardVersionedName:@"AskSendMoney"] bundle:nil];
+     selectFriend = [mainStoryboard instantiateViewControllerWithIdentifier:@"FriendsList"];
+     selectFriend.isfromFB = YES;
+     [selectFriend assignParent:self];
+     nextViewController = selectFriend;
+     [self.navigationController pushViewController:selectFriend animated:YES];
      */
 }
 
@@ -811,14 +811,14 @@
     dispatch_async(dispatch_get_main_queue(), ^{
         
         /*
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error"
-                                                        message:@"You are not the device owner."
-                                                       delegate:nil
-                                              cancelButtonTitle:@"Ok"
-                                              otherButtonTitles:nil];
-        
-        
-        [alert show];
+         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error"
+         message:@"You are not the device owner."
+         delegate:nil
+         cancelButtonTitle:@"Ok"
+         otherButtonTitles:nil];
+         
+         
+         [alert show];
          */
         [self touchIDErrorBack];
     });
@@ -926,7 +926,7 @@
     NSString *currencyCode = [uData retrieveCurrencyCode];
     
     NSString *outMessage = [NSString stringWithFormat:@"Hi %@: I have sent you %@ %@ using Fastacash Wallet. Click on the fastalink to view the transfer details. %@/%@", recipient, currencyCode, amount, @"http://test.fastacash.com", code];
-//    outMessage = [outMessage stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding ];
+    //    outMessage = [outMessage stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding ];
     NSNumber *ABIDNum = [uData retrieveReceiverABID];
     if (ABIDNum != nil){
         ABRecordID rec_id = (ABRecordID)[ABIDNum intValue];

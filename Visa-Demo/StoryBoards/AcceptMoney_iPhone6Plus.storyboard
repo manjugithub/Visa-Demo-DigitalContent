@@ -575,7 +575,7 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="callBtn" destination="K55-hj-nn7" id="p20-ln-fy6"/>
-                                            <outlet property="profileImageView" destination="ZNB-O7-bkK" id="82T-Mh-h0Z"/>
+                                            <outlet property="profileImageView" destination="uFf-XB-6PC" id="Xat-zg-kms"/>
                                             <outlet property="senderNameLabel" destination="6hG-ue-Iae" id="uYh-8T-bSg"/>
                                         </connections>
                                     </tableViewCell>

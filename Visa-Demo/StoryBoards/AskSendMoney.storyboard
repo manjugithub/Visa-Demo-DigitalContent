@@ -1314,7 +1314,7 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="callBtn" destination="MiK-Ji-gv2" id="vOb-xp-ae5"/>
-                                            <outlet property="profileImageView" destination="hVj-HS-ySX" id="oUu-fy-QDA"/>
+                                            <outlet property="profileImageView" destination="i6d-tq-0NG" id="MPy-ca-kWT"/>
                                             <outlet property="senderNameLabel" destination="iJa-zQ-8D9" id="5nR-78-Sa9"/>
                                         </connections>
                                     </tableViewCell>

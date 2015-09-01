@@ -40,11 +40,11 @@
     [session newSession];
     session.linkID = host;
     
-
+    
     if ( fromURL ){
         [self userSetup];
     }
-
+    
     
     return YES;
 }
@@ -57,9 +57,9 @@
     [userDefault setObject:cardsArray forKey:@"existingCards"];
     [userDefault synchronize];
     [[NSURLCache sharedURLCache] removeAllCachedResponses];
-
+    
     [[UIApplication sharedApplication] cancelAllLocalNotifications];
-        
+    
     // HT - Force ready QRCode Scanner way before it's needed. No worries, not loading camera behind.
     [ZBarReaderView class];
     UILocalNotification *remoteNotification = [launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey];
@@ -144,7 +144,7 @@
 - (void)applicationWillEnterForeground:(UIApplication *)application {
     application.applicationIconBadgeNumber = -1;
     [[UIApplication sharedApplication] cancelAllLocalNotifications];
-
+    
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
@@ -207,9 +207,9 @@
     if ( application.applicationState == UIApplicationStateActive){
         UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@""
                                                             message:message
-                                                            delegate:self
-                                                    cancelButtonTitle:nil
-                                                    otherButtonTitles:@"Later",@"Open Link", nil];
+                                                           delegate:self
+                                                  cancelButtonTitle:nil
+                                                  otherButtonTitles:@"Later",@"Open Link", nil];
         [alertView show];
         return;
     }
@@ -303,7 +303,7 @@
     NSString *userFCUID = [userDict objectForKey:@"fcuid"];
     NSString *userWUID = [userDict objectForKey:@"wuid"];
     NSString *userDefaultCurrency = [userDict objectForKey:@"defaultCurrency"];
-
+    
     
     [FCUserData sharedData].WUID = userWUID;
     [FCUserData sharedData].FCUID = userFCUID;
@@ -346,7 +346,7 @@
     }
     
     [FCUserData sharedData].defaultCurrency = userDefaultCurrency;
-
+    
     
     [Parse setApplicationId:[AppSettings get:@"PARSE_APP_ID"] clientKey:[AppSettings get:@"PARSE_CLIENT_KEY"]];
     
@@ -359,7 +359,7 @@
     {
         [[UIApplication sharedApplication] registerForRemoteNotificationTypes:UIRemoteNotificationTypeAlert|UIRemoteNotificationTypeBadge|UIRemoteNotificationTypeSound];
     }
-
+    
     NSString *currencyCode = [FCUserData sharedData].defaultCurrency;
     NSLog(@"userHasSetup:::: %d", userHasSetup);
     
@@ -373,8 +373,8 @@
     }else{
         [self loadDashboard];
     }
-
-
+    
+    
 }
 
 
@@ -497,7 +497,7 @@
     {
         [[UIApplication sharedApplication] registerForRemoteNotificationTypes:UIRemoteNotificationTypeAlert|UIRemoteNotificationTypeBadge|UIRemoteNotificationTypeSound];
     }
-
+    
     // APN REGISTER WUID AND ENABLE TO URBAN AIRSHIP
     //[UAPush shared].alias = userWUID;
     //[UAPush shared].userPushNotificationsEnabled = YES;
@@ -521,7 +521,7 @@
         // Load Dashboard if not from external link of ATR or receiving money.
         [self loadDashboard];
     }
-
+    
 }
 
 
@@ -598,11 +598,11 @@
     NSLog(@"userHasSetup:::: %d", userHasSetup);
     
     if ( isFromPushNotfication){
-            // read the link details
-            hud = [MBProgressHUD showHUDAddedTo:self.window animated:YES];
-            hud.labelText = @"";
-            [FCHTTPClient sharedFCHTTPClient].delegate = self;
-            [[FCHTTPClient sharedFCHTTPClient] readlink:linkID withDefaultCurrencyCode:currencyCode];
+        // read the link details
+        hud = [MBProgressHUD showHUDAddedTo:self.window animated:YES];
+        hud.labelText = @"";
+        [FCHTTPClient sharedFCHTTPClient].delegate = self;
+        [[FCHTTPClient sharedFCHTTPClient] readlink:linkID withDefaultCurrencyCode:currencyCode];
         
     }else{
         [self loadDashboard];
@@ -622,7 +622,7 @@
     
     // HT - IF Receive Money
     [vc navAcceptMoneyGo:linkID];
-
+    
 }
 
 

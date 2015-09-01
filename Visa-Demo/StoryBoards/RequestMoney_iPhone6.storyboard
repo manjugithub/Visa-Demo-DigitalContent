@@ -661,7 +661,7 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="callBtn" destination="x8Q-OO-Jpz" id="YPT-pi-ekE"/>
-                                            <outlet property="profileImageView" destination="0Ux-Bs-exH" id="dHS-HC-frt"/>
+                                            <outlet property="profileImageView" destination="kjS-mU-Pmm" id="sM1-qQ-i1J"/>
                                             <outlet property="senderNameLabel" destination="XrJ-jl-1Mp" id="GhI-X0-Vsh"/>
                                         </connections>
                                     </tableViewCell>

@@ -10,14 +10,14 @@
 	<string>Fastacash</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>E6CCE54144AA64370BAAE11D8105C1207D6ABE26</key>
+		<key>FED40A6E56E931E1638B5EA31EF2BB11FA064EB5</key>
 		<string>https://github.com/Fastacash/Visa-Demo.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>Fastacash.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>E6CCE54144AA64370BAAE11D8105C1207D6ABE26</key>
+		<key>FED40A6E56E931E1638B5EA31EF2BB11FA064EB5</key>
 		<string>..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
@@ -25,14 +25,14 @@
 	<key>IDESourceControlProjectVersion</key>
 	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>E6CCE54144AA64370BAAE11D8105C1207D6ABE26</string>
+	<string>FED40A6E56E931E1638B5EA31EF2BB11FA064EB5</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>E6CCE54144AA64370BAAE11D8105C1207D6ABE26</string>
+			<string>FED40A6E56E931E1638B5EA31EF2BB11FA064EB5</string>
 			<key>IDESourceControlWCCName</key>
 			<string>Visa-Demo</string>
 		</dict>

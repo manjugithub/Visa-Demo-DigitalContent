@@ -268,25 +268,35 @@
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SeQ-u5-KLI">
                                                             <rect key="frame" x="55" y="13" width="40" height="40"/>
                                                             <subviews>
-                                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nOq-Ml-xWi">
+                                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="nOq-Ml-xWi">
                                                                     <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
                                                                     <constraints>
-                                                                        <constraint firstAttribute="width" constant="40" id="qJb-xs-5CR"/>
-                                                                        <constraint firstAttribute="height" constant="40" id="w9x-1a-Re7"/>
+                                                                        <constraint firstAttribute="height" constant="40" id="86N-fy-eAI"/>
+                                                                        <constraint firstAttribute="width" constant="40" id="ZdC-3E-gT9"/>
                                                                     </constraints>
                                                                 </imageView>
-                                                                <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="AcceptMoney_Sender_outline" translatesAutoresizingMaskIntoConstraints="NO" id="iRE-OY-m6g">
+                                                                <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AcceptMoney_Sender_outline" translatesAutoresizingMaskIntoConstraints="NO" id="iRE-OY-m6g">
                                                                     <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
                                                                     <constraints>
-                                                                        <constraint firstAttribute="width" constant="40" id="X9O-t4-Yar"/>
-                                                                        <constraint firstAttribute="height" constant="40" id="YUl-45-60e"/>
+                                                                        <constraint firstAttribute="width" constant="40" id="pV0-nA-QAv"/>
+                                                                        <constraint firstAttribute="height" constant="40" id="wZp-7b-84R"/>
                                                                     </constraints>
                                                                 </imageView>
                                                             </subviews>
                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="40" id="0JV-OX-xKc"/>
+                                                                <constraint firstItem="nOq-Ml-xWi" firstAttribute="top" secondItem="SeQ-u5-KLI" secondAttribute="top" id="4tn-EP-6Is"/>
+                                                                <constraint firstAttribute="bottom" secondItem="iRE-OY-m6g" secondAttribute="bottom" id="8KR-pt-ahN"/>
                                                                 <constraint firstAttribute="width" constant="40" id="8dm-tI-cp0"/>
+                                                                <constraint firstAttribute="bottom" secondItem="nOq-Ml-xWi" secondAttribute="bottom" id="8qp-Gt-8o2"/>
+                                                                <constraint firstAttribute="centerX" secondItem="nOq-Ml-xWi" secondAttribute="centerX" id="CSJ-FX-zMj"/>
+                                                                <constraint firstItem="iRE-OY-m6g" firstAttribute="top" secondItem="SeQ-u5-KLI" secondAttribute="top" id="Lg6-U5-Mjs"/>
+                                                                <constraint firstItem="iRE-OY-m6g" firstAttribute="leading" secondItem="SeQ-u5-KLI" secondAttribute="leading" id="blG-rS-fnw"/>
+                                                                <constraint firstAttribute="trailing" secondItem="iRE-OY-m6g" secondAttribute="trailing" id="cTd-lh-3rL"/>
+                                                                <constraint firstItem="nOq-Ml-xWi" firstAttribute="leading" secondItem="SeQ-u5-KLI" secondAttribute="leading" id="iwl-7q-ilP"/>
+                                                                <constraint firstAttribute="trailing" secondItem="nOq-Ml-xWi" secondAttribute="trailing" id="uvX-sq-iuy"/>
+                                                                <constraint firstAttribute="centerY" secondItem="nOq-Ml-xWi" secondAttribute="centerY" id="vSh-jg-6gh"/>
                                                             </constraints>
                                                         </view>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dst-HA-Ccr">
@@ -338,7 +348,7 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="callBtn" destination="dst-HA-Ccr" id="67L-dc-5iL"/>
-                                            <outlet property="profileImageView" destination="iRE-OY-m6g" id="rSZ-3S-YLz"/>
+                                            <outlet property="profileImageView" destination="nOq-Ml-xWi" id="ReD-qg-jaZ"/>
                                             <outlet property="senderNameLabel" destination="GHd-hp-xPO" id="f1s-sK-OZG"/>
                                         </connections>
                                     </tableViewCell>

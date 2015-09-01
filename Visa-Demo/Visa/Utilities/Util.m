@@ -38,9 +38,9 @@
     } else {
         [dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss.SSZZ"];
         date = [dateFormatter dateFromString:wsDateStr];
-    }
+    }	
     return date;
-}
+}	
 
 
 +(NSDate *)datefromExpiry:(NSString *)expiryDate
@@ -59,7 +59,7 @@
         date = [dateFormatter dateFromString:expiryDate];
     }
     return date;
-    
+
 }
 
 
@@ -152,12 +152,12 @@
     NSString *documentsPath = [dirPaths objectAtIndex:0];
     
     NSString *docsDir = [documentsPath stringByAppendingPathComponent:[NSString stringWithFormat:@"%@",[FCSession sharedSession].linkID]];
-    
+
     if(![[NSFileManager defaultManager] fileExistsAtPath:docsDir])
     {
         [[NSFileManager defaultManager] createDirectoryAtPath:docsDir withIntermediateDirectories:NO attributes:nil error:nil];
     }
-    
+
     return [docsDir stringByAppendingPathComponent:@"tmp.m4a"];
 }
 
@@ -173,7 +173,7 @@
     {
         [[NSFileManager defaultManager] createDirectoryAtPath:docsDir withIntermediateDirectories:NO attributes:nil error:nil];
     }
-    
+
     return [docsDir stringByAppendingPathComponent:@"newVideo1.MOV"];
 }
 

@@ -579,7 +579,7 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="callBtn" destination="oca-Hz-l5l" id="nDC-Q8-Fdm"/>
-                                            <outlet property="profileImageView" destination="4Yb-j4-leY" id="Qq4-vW-gSh"/>
+                                            <outlet property="profileImageView" destination="oHR-2o-YAp" id="Har-yM-qZo"/>
                                             <outlet property="senderNameLabel" destination="h73-Wc-BFZ" id="2xu-1Y-mfg"/>
                                         </connections>
                                     </tableViewCell>

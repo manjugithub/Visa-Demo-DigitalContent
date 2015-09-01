@@ -45,7 +45,7 @@
 		<string>https://visa-demo.fastacash.com/2.0/</string>
 	</dict>
 	<key>ENVIRONMENT</key>
-	<string>PRODUCTION</string>
+	<string>DEVELOPEMENT</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>PRODUCTION</key>

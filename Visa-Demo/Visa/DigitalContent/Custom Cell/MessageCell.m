@@ -37,6 +37,14 @@
     [self.ParentVC closeDigitalContentCell:self];
 }
 
+-(NSString *)tableCellGetRandomImg{
+    
+    NSInteger r = 1 + arc4random() % 4;
+    NSString *imgNameStr = [NSString stringWithFormat:@"FriendsList_Avatar_Bg_%ld", (long)r];
+    return imgNameStr;
+    
+}
+
 -(void)setProfilePicture
 {
     NSString *imageProfile = [[FCSession sharedSession].recipient getProfilePhoto];
@@ -45,19 +53,26 @@
         NSString *photoURL = [[FCSession sharedSession] getRecipientPhoto];
         if(nil == photoURL)
         {
-            CAGradientLayer *gradient = [CAGradientLayer layer];
-            gradient.frame = self.frame;
-            UIColor *firstColor = [UIColor colorWithRed:0.863f
-                                                  green:0.141f
-                                                   blue:0.376f
-                                                  alpha:1.0f];
-            UIColor *secondColor = [UIColor colorWithRed:0.518f
-                                                   green:0.216f
-                                                    blue:0.486f
-                                                   alpha:1.0f];
+            UILabel *label = [[UILabel alloc] initWithFrame:self.profileImageView.bounds];
+            [self.profileImageView setImage:[UIImage imageNamed:[self tableCellGetRandomImg]]];
+
             
-            gradient.colors = [NSArray arrayWithObjects:(id)firstColor.CGColor, (id)secondColor.CGColor, nil];
-            [self.profileImageView.layer insertSublayer:gradient atIndex:0];
+            NSString *fullName = [FCSession sharedSession].sender.name;
+            NSString *shortName = @"";
+            
+            NSArray *array = [fullName componentsSeparatedByCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+            array = [array filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"SELF != ''"]];
+            
+            for (NSString *string in array) {
+                //NSString *firstNameFirstChar = [[NSString stringWithFormat: @"%C", [friend.firstName characterAtIndex:0]] uppercaseString]
+                NSString *initial = [[NSString stringWithFormat: @"%C", [string characterAtIndex:0]] uppercaseString];
+                shortName = [shortName stringByAppendingString:initial];
+            }
+            
+            label.text = shortName;
+            label.textColor = [UIColor whiteColor];
+            label.textAlignment = NSTextAlignmentCenter;
+            [self.profileImageView addSubview:label];
 
         }
         else
